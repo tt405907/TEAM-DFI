@@ -25,8 +25,8 @@
 * 22/11 - Setup des Différentes IA
   * Implentation des robots "intélligents".
   
-* 29/11 - Ajout de l'exportations des simulations de parties sur les fichiers 
-  * Retranscription des parties sur fichiers
+* 29/11 - Retranscription des simulations sur des fichiers
+  * Exportations de diverses donnés de nos simulations sur des fichiers.
   
 * 06/12 - Optimisation du jeux en générale
   * Optimisation algorithmique pour gagner en rapidité d'exécution.
