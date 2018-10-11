@@ -14,7 +14,7 @@
   * Joueur permettant la prise en compte des effets des faces des dés.
   
 * 01/11 - Partie à n Joueurs 
-  * Permetant une première simulation très basique des fonctionalités du jeu.
+  * Permettant une première simulation très basique des fonctionalités du jeu.
   
 * 08/11 - Ajout du Jardin et Santuaire avec une version alpha d'une IA 
   * Permettant le changement de face aux différents joueurs de la partie si ils ont les ressources nécessaires, et une première IA pouvant faire un choix sur les faces à choix multiples.
