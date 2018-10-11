@@ -8,7 +8,7 @@
 # Itérations
 
 * 25/10 - Un Joueur avec Dé et Faces
-  * Un joueur peux jetter des Dés avec des Faces et stocker les valeurs des Faces.
+  * Un joueur peut jetter des Dés avec des Faces et stocker les valeurs des Faces.
   
 * 01/11 - Partie à n Joueurs 
   * Permettant une première simulation très basique des fonctionalités du jeu.
