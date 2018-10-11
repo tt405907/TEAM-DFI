@@ -10,8 +10,8 @@
 * 18/10 - Dé et  Faces 
   * Mise en place du jeté de dé , le changement de face d'un dé.
   
-* 25/10 - Ajout Joueur
-  * Joueur permettant la prise en compte des effets des faces des dés.
+* 25/10 - Un Joueur 
+  * Le joueur permet de stocker les valeurs des faces des dés.
   
 * 01/11 - Partie à n Joueurs 
   * Permettant une première simulation très basique des fonctionalités du jeu.
