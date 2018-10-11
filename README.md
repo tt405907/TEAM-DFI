@@ -7,11 +7,8 @@
 
 # Itérations
 
-* 18/10 - Dé et  Faces 
-  * Mise en place du jeté de dé , le changement de face d'un dé.
-  
-* 25/10 - Un Joueur 
-  * Le joueur permet de stocker les valeurs des faces des dés.
+* 25/10 - Un Joueur avec Dé et Faces
+  * Un joueur peux jetter des Dés avec des Faces et stocker les valeurs des Faces.
   
 * 01/11 - Partie à n Joueurs 
   * Permettant une première simulation très basique des fonctionalités du jeu.
