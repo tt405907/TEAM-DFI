@@ -2,7 +2,7 @@
 
 * tt405907 : Théo Traol
 * Lykrast : Aymeric Picard Marchetto
-* aa303554 : Arnaud A??
+* aa303554 : Arnaud Arbona
 * ThomasPortet : Thomas Portet
 
 # Itérations
