@@ -7,23 +7,27 @@
 
 # Itérations
 
-* 25/10 - Un Joueur avec Dé et Faces
-  * Un joueur peut jetter des Dés avec des Faces et stocker les valeurs des Faces.
+* 25/10 - Un joueur avec dés et faces
+  * Un joueur jette ses 2 dés et gagne des ressources (Or, Soleil, Lune et Victoire).
   
-* 01/11 - Partie à n Joueurs 
-  * Permettant une première simulation très basique des fonctionalités du jeu.
+* 01/11 - Partie à n joueurs 
+  * Simulation simple d'une partie avec un/des gagnant(s), sans cartes et sans le Sanctuaire.
   
-* 08/11 - Ajout du Jardin et Santuaire avec une version alpha d'une IA 
-  * Permettant le changement de faces aux différents joueurs de la partie si ils ont les ressources nécessaires, et une première IA pouvant faire un choix sur les faces à choix multiples.
+* 08/11 - Ajout du Sanctuaire avec une version basique d'une IA 
+  * Ajout du Sanctuaire pour que les joueurs puissent acheter des faces pour leurs dés.
+  * Ajout d'une IA très basique pour décider d'acheter des faces et où les placer sur les dés.
   
 * 15/11 - Ajout des Cartes et mise à niveau de l'IA
-  * Les joueurs ont maintenant le choix entre le changement de faces et la prise d'une carte. Avec prise en compte des divers effets des cartes.
+  * Ajout des cartes de base et de leurs effets.
+  * Mise à niveau de l'IA de base pour une utilisation très simple de ces cartes.
   
-* 22/11 - Setup des Différentes IA
-  * Implentation des robots "intélligents".
+* 22/11 - Amélioration des IAs
+  * Amélioration des IAs pour utiliser des stratégies plus complexe pour la simulation.
   
-* 29/11 - Retranscription des simulations sur des fichiers
-  * Exportations de diverses donnés de nos simulations sur des fichiers.
+* 29/11 - Simulation de masse et écriture sur un fichier
+  * Simulation de plusieurs parties à la suite.
+  * Ecriture des résultats dans un/des fichier(s) pour faciliter la lecture.
   
-* 06/12 - Optimisation du jeux en générale
-  * Optimisation algorithmique pour gagner en rapidité d'exécution.
+* 06/12 - Optimisation et correction de bugs
+  * Optimisation de certains algorithmes pour accélérer les simulations.
+  * Correction des bugs restants.
