@@ -1,20 +1,28 @@
 package joueur;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class testant toutes les methodes de notre class Joueur
+ */
 class JoueurTest {
 
     private Joueur joueur;
 
+    /**
+     * On initialise chacun de nos tests avec  cette methode
+     */
     @BeforeEach
     void setBefore()
     {
         joueur = new Joueur("joeur");
     }
 
+    /**
+     * Test de notre methode addOr de notre class Joueur
+     */
     @Test
     void addOr()
     {
@@ -31,6 +39,9 @@ class JoueurTest {
         assertEquals(8,joueur.getOr());
     }
 
+    /**
+     * Test de notre methode addSoleil de notre class Joueur
+     */
     @Test
     void addSoleil()
     {
@@ -47,6 +58,9 @@ class JoueurTest {
         assertEquals(4,joueur.getSoleil());
     }
 
+    /**
+     * Test de notre methode addLune de notre class Joueur
+     */
     @Test
     void addLune()
     {
@@ -63,6 +77,9 @@ class JoueurTest {
         assertEquals(4,joueur.getLune());
     }
 
+    /**
+     * Test de notre methode addVictoire de notre class Joueur
+     */
     @Test
     void addVictoire()
     {
