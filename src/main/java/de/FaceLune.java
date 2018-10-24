@@ -2,7 +2,7 @@ package de;
 
 import joueur.Joueur;
 
-public class FaceLune {
+public class FaceLune extends Face{
 	private int nombreLune;
 
 	public FaceLune(int n) {
