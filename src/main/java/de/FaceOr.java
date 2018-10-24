@@ -2,7 +2,7 @@ package de;
 
 import joueur.Joueur;
 
-public class FaceOr {
+public class FaceOr extends Face{
 	private int nombreOr;
 
 	public FaceOr(int n) {
