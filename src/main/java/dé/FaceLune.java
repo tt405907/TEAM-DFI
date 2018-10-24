@@ -1,7 +1,7 @@
 package dé;
 public  class FaceLune {
     private int nombreLune;
-    public FaceLune(int n) {
+    public void FaceLune(int n) {
         assert (n==1||n==2);
         this.nombreLune=n;
     }
