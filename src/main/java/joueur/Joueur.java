@@ -1,7 +1,6 @@
 package joueur;
 
 import de.De;
-import de.Face;
 public class Joueur {
 	private int or, orMax;
 	private int soleil, soleilMax;
@@ -63,6 +62,11 @@ public class Joueur {
 	public void appliquerDe() {
 		de1.appliquerDe(this);
 		de2.appliquerDe(this);
+	}
+	
+	@Override
+	public String toString() {
+		return nom;
 	}
 
 }
