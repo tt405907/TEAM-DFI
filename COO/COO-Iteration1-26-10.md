@@ -21,3 +21,5 @@ void faireTours() :
 
 # Test :
 * Les tests unitaires de chaque classe ont été effectué par une personne différente de celle qui l'a développée.
+
+![DiagrammeTest](DiagramTest-Iteration1-26-10.png)
