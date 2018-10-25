@@ -1,4 +1,4 @@
-![Diagramme](Diagramme-Iteration1-26-10.png)
+![Diagramme](Diagram-Iteration1-26-10.png)
 
 # Class :
 
