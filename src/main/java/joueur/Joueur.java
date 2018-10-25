@@ -57,6 +57,9 @@ public class Joueur {
 	}
 
 
+	/**
+	 * Cela nous permet de lancer et d'appliquer la face en question
+	 */
 	public void appliquerDe() {
 		de1.appliquerDe(this);
 		de2.appliquerDe(this);
