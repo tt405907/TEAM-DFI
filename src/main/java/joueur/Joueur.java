@@ -15,6 +15,7 @@ public abstract class Joueur {
 	 * @return l'indice de la face à appliquer dans le tableau
 	 */
 	public abstract int choixFace(Face[] faces);
+	//TODO: méthode pour faire ses achats
 
 	// Pour l'affichage
 	private String nom;
