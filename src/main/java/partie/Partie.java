@@ -22,7 +22,7 @@ public class Partie {
 	/**effectuer un tour pour chaque joueurs
 	 * 
 	 */
-	public void faireTours() {
+	public void faireTour() {
 		for (Joueur act : joueurs) {
 			for (Joueur j : joueurs) {
 				j.appliquerDe();
@@ -32,7 +32,6 @@ public class Partie {
 			}
 			//TODO action joueurs
 		}
-		nbTour--;
 	}
 	
 	/**
@@ -43,7 +42,8 @@ public class Partie {
 			joueurs[i].addOr(4-i);
 		}
 		while (nbTour > 0) {
-			faireTours();
+			faireTour();
+			nbTour--;
 		}
 		List<Joueur> gagnant = new ArrayList<>();
 		int max = 0;

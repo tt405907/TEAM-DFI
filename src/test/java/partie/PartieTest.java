@@ -33,7 +33,7 @@ public class PartieTest {
 	    {	
 	    
 	        // test borne max
-	        partie.faireTours();
+	        partie.faireTour();
 	        int i1= j1.getOr()+j1.getLune()+j1.getSoleil()+j1.getLune();
 	        int i2= j2.getOr()+j2.getLune()+j2.getSoleil()+j2.getLune();
 	        int i3= j3.getOr()+j3.getLune()+j3.getSoleil()+j3.getLune();
