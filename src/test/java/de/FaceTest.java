@@ -1,10 +1,11 @@
 package de;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import joueur.BotDefault;
 import joueur.Joueur;
 
 class FaceTest {
@@ -13,7 +14,7 @@ class FaceTest {
 	@BeforeEach
     void setBefore()
     {
-        joueur = new Joueur("joeur");
+        joueur = new BotDefault("joeur");
     }
 
 	@Test

@@ -1,10 +1,13 @@
 package de;
 
-import joueur.Joueur;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import joueur.BotDefault;
+import joueur.Joueur;
 
 class DeTest {
     private Joueur joueur;
@@ -12,7 +15,7 @@ class DeTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new Joueur("joeur");
+        joueur = new BotDefault("joeur");
     }
 
     /**

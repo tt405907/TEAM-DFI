@@ -2,12 +2,12 @@ package partie;
 
 import static org.junit.Assert.assertTrue;
 
-
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import joueur.BotDefault;
 import joueur.Joueur;
 
 public class PartieTest {
@@ -20,10 +20,10 @@ public class PartieTest {
 	    @BeforeEach
 	    void setBefore()
 	    {
-	        j1= new Joueur("joeur1");
-	        j2= new Joueur("joeur2");
-	        j3= new Joueur("joeur3");
-	        j4= new Joueur("joeur4");
+	        j1= new BotDefault("joeur1");
+	        j2= new BotDefault("joeur2");
+	        j3= new BotDefault("joeur3");
+	        j4= new BotDefault("joeur4");
 	        partie= new Partie(j1,j2,j3,j4);
 	    }
 

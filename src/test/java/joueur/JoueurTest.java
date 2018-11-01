@@ -1,8 +1,9 @@
 package joueur;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Class testant toutes les methodes de notre class Joueur
@@ -17,7 +18,7 @@ class JoueurTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new Joueur("joeur");
+        joueur = new BotDefault("joeur");
     }
 
     /**

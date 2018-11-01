@@ -1,11 +1,20 @@
 package joueur;
 
 import de.De;
-public class Joueur {
+import de.Face;
+public abstract class Joueur {
 	private int or, orMax;
 	private int soleil, soleilMax;
 	private int lune, luneMax;
 	private int victoire;
+	
+	//Fonctions de bot
+	/**
+	 * Propose plusieurs faces au bot pour qu'il donne l'indice de la face qu'il souhaite appliquer dans le tableau.
+	 * @param faces les faces que le bot peut appliquer
+	 * @return l'indice de la face à appliquer dans le tableau
+	 */
+	public abstract int choixFace(Face[] faces);
 
 	// Pour l'affichage
 	private String nom;
