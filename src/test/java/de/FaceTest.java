@@ -18,7 +18,7 @@ class FaceTest {
 
 	@Test
 		public void testFaceOr() {
-			Face face = new FaceOr(4);
+			Face face = new FaceOr(4,0);
 			
 			assertEquals(0, joueur.getOr());
 			face.appliquer(joueur);
@@ -27,7 +27,7 @@ class FaceTest {
 
 	@Test
 		public void testFaceLune() {
-			Face face = new FaceLune(4);
+			Face face = new FaceLune(4,0);
 	
 			assertEquals(0, joueur.getLune());
 			face.appliquer(joueur);
@@ -36,7 +36,7 @@ class FaceTest {
 	
 	@Test
 	public void testFaceSoleil() {
-		Face face = new FaceSoleil(4);
+		Face face = new FaceSoleil(4,0);
 
 		assertEquals(0, joueur.getSoleil());
 		face.appliquer(joueur);
@@ -45,7 +45,7 @@ class FaceTest {
 	
 	@Test
 	public void testFaceVictoire() {
-		Face face = new FaceVictoire(4);
+		Face face = new FaceVictoire(4,0);
 
 		assertEquals(0, joueur.getVictoire());
 		face.appliquer(joueur);
