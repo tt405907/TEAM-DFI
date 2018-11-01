@@ -21,12 +21,12 @@ class DeTest {
     @Test
     void testAppliquerDe() {
         De d = new De(new Face[]{
-                new FaceLune(1),
-                new FaceLune(1),
-                new FaceLune(1),
-                new FaceLune(1),
-                new FaceLune(1),
-                new FaceLune(1)
+                new FaceLune(1,0),
+                new FaceLune(1,1),
+                new FaceLune(1,0),
+                new FaceLune(1,0),
+                new FaceLune(1,0),
+                new FaceLune(1,0)
         });
 
         assertEquals(0, joueur.getLune());
@@ -42,12 +42,12 @@ class DeTest {
     @Test
     void testAppliquerFaces() {
         De d = new De(new Face[]{
-                new FaceLune(1),
-                new FaceLune(1),
-                new FaceLune(1),
-                new FaceSoleil(1),
-                new FaceSoleil(1),
-                new FaceSoleil(1)
+                new FaceLune(1,0),
+                new FaceLune(1,0),
+                new FaceLune(1,0),
+                new FaceSoleil(1,0),
+                new FaceSoleil(1,0),
+                new FaceSoleil(1,0)
         });
 
         assertEquals(0, joueur.getLune());

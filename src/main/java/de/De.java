@@ -3,6 +3,7 @@ package de;
 import java.util.Arrays;
 import java.util.Random;
 import joueur.Joueur;
+
 /**
  * Classe permettant de simuler un De pour un joueur , un De a 6 faces
  */
@@ -14,8 +15,8 @@ public class De
     private Random rand;
 
     // Nos Des initaux
-    public static final Face[] de1 = {new FaceOr(1),new FaceOr(1),new FaceOr(1),new FaceOr(1),new FaceOr(1),new FaceSoleil(1)};
-    public static final Face[] de2 = {new FaceOr(1),new FaceOr(1),new FaceOr(1),new FaceOr(1),new FaceLune(1),new FaceVictoire(2)};
+    public static final Face[] de1 = {new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceSoleil(1,0)};
+    public static final Face[] de2 = {new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceLune(1,0),new FaceVictoire(2,0)};
 
     /**
      * Notre constructeur pour initialiser nos 2 Des
