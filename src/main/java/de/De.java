@@ -15,8 +15,8 @@ public class De
     private Random rand;
 
     // Nos Des initaux
-    public static final Face[] de1 = {new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceSoleil(1,0)};
-    public static final Face[] de2 = {new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceOr(1,0),new FaceLune(1,0),new FaceVictoire(2,0)};
+    public static final Face[] de1 = {Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.SOLEIL_1};
+    public static final Face[] de2 = {Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.LUNE_1, Faces.VICTOIRE_2};
 
     /**
      * Notre constructeur pour initialiser nos 2 Des
@@ -47,6 +47,16 @@ public class De
     {
         int temp = rand.nextInt(6);
         this.getFace(temp).appliquer(j);
+    }
+    
+    /**
+     * Remplace la Face à l'indice indice par face.
+     * @param face Face à poser
+     * @param indice Emplacement où face sera posée
+     */
+    public void forge(Face face, int indice)
+    {
+    	allFaces[indice] = face;
     }
 
 }

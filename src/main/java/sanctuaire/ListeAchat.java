@@ -27,6 +27,10 @@ public class ListeAchat {
 		return restantes;
 	}
 	
+	public boolean isEmpty() {
+		return restantes.isEmpty();
+	}
+	
 	public void acheter(Face face) {
 		//Tente de retirer la face désirée
 		if (restantes.remove(face))
@@ -37,6 +41,8 @@ public class ListeAchat {
 			
 			//Cache les faces que le joueur ne peut plus acheter
 			restantes.removeIf(f -> f.getPrix() > acheteur.getOr());
+			
+			acheteur.forge(face);
 		}
 	}
 }

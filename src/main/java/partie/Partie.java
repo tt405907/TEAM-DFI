@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import joueur.Joueur;
+import sanctuaire.Sanctuaire;
 
 public class Partie {
 	private Joueur[] joueurs;
 	private int nbTour;
+	private Sanctuaire sanctuaire;
 
 	public Partie(Joueur... joueurs) {
 		this.joueurs = joueurs;
-		if ( joueurs.length == 3) {
+		if (joueurs.length == 3) {
 			nbTour = 10;
 		}
 		else {
 			nbTour = 9;
 		}
+		
+		sanctuaire = new Sanctuaire(joueurs.length);
 	}
 	
 	/**effectuer un tour pour chaque joueurs
@@ -30,7 +34,9 @@ public class Partie {
 					j.appliquerDe();
 				}
 			}
-			//TODO action joueurs
+			
+			//Pas de cartes pour le moment
+			act.faireAchats(sanctuaire.getAchatsPossible(act));
 		}
 	}
 	

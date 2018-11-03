@@ -2,6 +2,7 @@ package joueur;
 
 import de.De;
 import de.Face;
+import sanctuaire.ListeAchat;
 public abstract class Joueur {
 	private int or, orMax;
 	private int soleil, soleilMax;
@@ -15,11 +16,20 @@ public abstract class Joueur {
 	 * @return l'indice de la face à appliquer dans le tableau
 	 */
 	public abstract int choixFace(Face[] faces);
-	//TODO: méthode pour faire ses achats
-
+	/**
+	 * Demande au bot de forger la face donnée sur un de ces dés.
+	 * @param face la face à forger
+	 */
+	public abstract void forge(Face face);
+	/**
+	 * Demande au bot de faire ses achats dans la liste d'achat donnée.
+	 * @param liste ListeAchat générée avec Sanctuaire.getAchatsPossible
+	 */
+	public abstract void faireAchats(ListeAchat liste);
+	
 	// Pour l'affichage
 	private String nom;
-	private De de1, de2;
+	protected De de1, de2;
 
 	public Joueur(String nom) {
 		super();
