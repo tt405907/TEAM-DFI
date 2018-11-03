@@ -43,7 +43,7 @@ public class Partie {
 			//Pas de cartes pour le moment
 			act.faireAchats(sanctuaire.getAchatsPossible(act));
 			
-
+			System.out.println("Fin du tour");
 			for (Joueur j : joueurs)
 			{
 				System.out.println(j.getStatus());
