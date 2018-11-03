@@ -14,4 +14,9 @@ public class FaceLune extends Face{
 		J.addLune(nombreLune);
 	}
 
+	@Override
+	public String toString() {
+		return nombreLune + " Lune";
+	}
+
 }

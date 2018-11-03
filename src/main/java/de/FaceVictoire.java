@@ -13,4 +13,9 @@ public class FaceVictoire extends Face{
 	public void appliquer(Joueur J) {
 		J.addVictoire(nombreVictoire);
 	}
+
+	@Override
+	public String toString() {
+		return nombreVictoire + " Victoire";
+	}
 }

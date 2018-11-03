@@ -14,4 +14,9 @@ public class FaceSoleil extends Face{
 		J.addSoleil(nombreSoleil);
 	}
 
+	@Override
+	public String toString() {
+		return nombreSoleil + " Soleil";
+	}
+
 }

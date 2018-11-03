@@ -14,4 +14,9 @@ public class FaceOr extends Face{
 		J.addOr(nombreOr);
 	}
 
+	@Override
+	public String toString() {
+		return nombreOr + " Or";
+	}
+
 }

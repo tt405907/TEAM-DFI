@@ -13,6 +13,8 @@ public class De
     private Face[] allFaces;
     // Permet de generer un random pour notre lancer
     private Random rand;
+    //Dernière face lancée, pour l'affichage
+    private int lastIndex = 0;
 
     // Nos Des initaux
     public static final Face[] de1 = {Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.SOLEIL_1};
@@ -38,6 +40,15 @@ public class De
     {
         return this.allFaces[indice];
     }
+    
+    /**
+     * Donne la dernière face que ce dé à appliqué.
+     * @return la dernière Face appliquée par ce dé
+     */
+    public Face getLastFace()
+    {
+    	return getFace(lastIndex);
+    }
 
     /**
      * Nous appliquons une Face de manière aléatoire sur les deux De
@@ -47,6 +58,7 @@ public class De
     {
         int temp = rand.nextInt(6);
         this.getFace(temp).appliquer(j);
+        lastIndex = temp;
     }
     
     /**
@@ -56,7 +68,9 @@ public class De
      */
     public void forge(Face face, int indice)
     {
+    	Face old = allFaces[indice];
     	allFaces[indice] = face;
+    	if (old != face) System.out.println("Forge: " + old + " -> " + face);
     }
 
 }

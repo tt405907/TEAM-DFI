@@ -28,15 +28,26 @@ public class Partie {
 	 */
 	public void faireTour() {
 		for (Joueur act : joueurs) {
+			System.out.println("-------------------------");
+			System.out.println("Tour de " + act);
+			System.out.println("-------------------------");
+			System.out.println("Faveur des dieux");
 			for (Joueur j : joueurs) {
 				j.appliquerDe();
 				if (joueurs.length == 2) {
 					j.appliquerDe();
 				}
 			}
-			
+
+			System.out.println("Action");
 			//Pas de cartes pour le moment
 			act.faireAchats(sanctuaire.getAchatsPossible(act));
+			
+
+			for (Joueur j : joueurs)
+			{
+				System.out.println(j.getStatus());
+			}
 		}
 	}
 	
@@ -48,6 +59,11 @@ public class Partie {
 			joueurs[i].addOr(4-i);
 		}
 		while (nbTour > 0) {
+			int max = joueurs.length == 3 ? 10 : 9;
+			System.out.println("=========================");
+			System.out.println("Tour " + (max-nbTour+1) + "/" + max);
+			System.out.println("=========================");
+			
 			faireTour();
 			nbTour--;
 		}

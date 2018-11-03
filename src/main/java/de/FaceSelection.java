@@ -20,4 +20,16 @@ public class FaceSelection extends Face {
         allFace[J.choixFace(allFace)].appliquer(J);
     }
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(allFace[0].toString());
+		for (int i = 1; i < allFace.length; i++)
+		{
+			sb.append(" ou ");
+			sb.append(allFace[i]);
+		}
+		
+		return sb.toString();
+	}
+
 }

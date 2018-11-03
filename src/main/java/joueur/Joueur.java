@@ -60,19 +60,27 @@ public abstract class Joueur {
 	}
 
 	public void addOr(int or) {
+		//int old = this.or;
 		this.or = Math.min(orMax, Math.max(0, this.or + or));
+		//if (old != this.or) System.out.println(this + ": Or " + old + " -> " + this.or);
 	}
 
 	public void addSoleil(int soleil) {
+		//int old = this.soleil;
 		this.soleil = Math.min(soleilMax, Math.max(0, this.soleil + soleil));
+		//if (old != this.soleil) System.out.println(this + ": Soleil " + old + " -> " + this.soleil);
 	}
 
 	public void addLune(int lune) {
+		//int old = this.lune;
 		this.lune = Math.min(luneMax, Math.max(0, this.lune + lune));
+		//if (old != this.lune) System.out.println(this + ": Lune " + old + " -> " + this.lune);
 	}
 
 	public void addVictoire(int victoire) {
+		//int old = this.victoire;
 		this.victoire += victoire;
+		//if (old != this.victoire) System.out.println(this + ": Victoire " + old + " -> " + this.victoire);
 	}
 
 
@@ -82,6 +90,11 @@ public abstract class Joueur {
 	public void appliquerDe() {
 		de1.appliquerDe(this);
 		de2.appliquerDe(this);
+		System.out.println(this + ": " + de1.getLastFace() + " et " + de2.getLastFace());
+	}
+	
+	public String getStatus() {
+		return this + " a " + this.getOr() + " or, " + this.getLune() + " éclats de lune, " + this.getSoleil() + " éclats de soleil et " + this.getVictoire() + " points de victoire";
 	}
 	
 	@Override

@@ -15,11 +15,13 @@ public class Main {
 		Partie p = new Partie(joueurs);
 		
 		List<Joueur> gagnants = p.game();
+		
+		System.out.println("=========================");
+		System.out.println("Fin de partie");
+		System.out.println("=========================");
+		
 		for (Joueur j : gagnants) {
 			System.out.println(j + " a gagné!");
-		}
-		for (Joueur j : joueurs) {
-			System.out.println(j + " a " + j.getOr() + " or, " + j.getLune() + " éclats de lune, " + j.getSoleil() + " éclats de soleil et " + j.getVictoire() + " points de victoire");
 		}
 	}
 
