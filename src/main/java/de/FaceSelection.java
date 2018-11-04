@@ -13,7 +13,7 @@ public class FaceSelection extends Face {
 
     /**
      * Demande au robot quel Face il veut choisir et applique la Face à l'indice que le robot à donne
-     * @param J Le joueur sur lequel nous apppliquons la Face choisit pas le joueur
+     * @param J Le joueur sur lequel nous appliquons la Face choisie par le joueur
      */
     public void appliquer(Joueur J)
     {
