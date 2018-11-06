@@ -18,7 +18,7 @@ public class BotRandom extends Joueur {
 	}
 
 	@Override
-	public int choixFace(Face[] faces) {
+	public int choixFace(Face...faces) {
 		return rand.nextInt(faces.length);
 	}
 

@@ -12,7 +12,7 @@ public class BotDefault extends Joueur {
 	}
 
 	@Override
-	public int choixFace(Face[] faces) {
+	public int choixFace(Face... faces) {
 		return 0;
 	}
 

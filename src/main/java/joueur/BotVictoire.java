@@ -62,7 +62,7 @@ public class BotVictoire extends Joueur {
 	}
 
 	@Override
-	public int choixFace(Face[] faces) {
+	public int choixFace(Face... faces) {
 		//Choisit la face qui rapporte le plus de points de victoire
 		int choix = 0;
 		int max = 0;

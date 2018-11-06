@@ -15,7 +15,7 @@ public abstract class Joueur {
 	 * @param faces les faces que le bot peut appliquer
 	 * @return l'indice de la face à appliquer dans le tableau
 	 */
-	public abstract int choixFace(Face[] faces);
+	public abstract int choixFace(Face... faces);
 	/**
 	 * Demande au bot de forger la face donnée sur un de ces dés.
 	 * @param face la face à forger
@@ -30,6 +30,7 @@ public abstract class Joueur {
 	// Pour l'affichage
 	private String nom;
 	protected De de1, de2;
+
 
 	public Joueur(String nom) {
 		super();
@@ -101,5 +102,12 @@ public abstract class Joueur {
 	public String toString() {
 		return nom;
 	}
-
+	
+	public De getDe1() {
+		return de1;
+	}
+	
+	public De getDe2() {
+		return de2;
+	}
 }

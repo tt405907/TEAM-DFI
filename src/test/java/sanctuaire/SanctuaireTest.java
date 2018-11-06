@@ -1,11 +1,10 @@
-package java.sanctuaire;
+package sanctuaire;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import de.*;
 import joueur.*;
-import sanctuaire.*;
 
 class SanctuaireTest {
 

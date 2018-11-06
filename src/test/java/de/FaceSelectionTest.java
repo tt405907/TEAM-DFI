@@ -13,13 +13,13 @@ class FaceSelectionTest {
 	void testSelectionFace() {
 		Face face = new FaceSelection(2,new FaceOr(4,0),new FaceLune(2,0));
 		Joueur bot0 = new BotDefault("joeur") {
-			public int choixFace(Face[] faces) {
+			public int choixFace(Face... faces) {
 				return 0;
 			}
 		};
 		
 		Joueur bot1 = new BotDefault("joeur") {
-			public int choixFace(Face[] faces) {
+			public int choixFace(Face... faces) {
 				return 1;
 			}
 		};
