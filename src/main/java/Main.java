@@ -18,6 +18,7 @@ public class Main {
 		joueurs[3] = new BotVictoire("Victoire 4");
 		
 		Partie p = new Partie(joueurs);
+		p.setPrinting(true);
 		
 		List<Joueur> gagnants = p.game();
 		

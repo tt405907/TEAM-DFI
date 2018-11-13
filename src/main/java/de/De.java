@@ -15,6 +15,12 @@ public class De
     private Random rand;
     //Dernière face lancée, pour l'affichage
     private int lastIndex = 0;
+    
+    private boolean printing = false;
+
+	public void setPrinting(boolean printing) {
+		this.printing = printing;
+	}
 
     // Nos Des initaux
     public static final Face[] de1 = {Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.OR_1, Faces.SOLEIL_1};
@@ -70,7 +76,17 @@ public class De
     {
     	Face old = allFaces[indice];
     	allFaces[indice] = face;
-    	if (old != face) System.out.println("Forge: " + old + " -> " + face);
+    	if (printing) 
+    	{
+    		System.out.println("Forge: " + old + " -> " + face + " (pour " + face.getPrix() + " or)");
+    	}
     }
-
+    
+    @Override
+    public String toString()
+    {
+    	return Arrays.toString(allFaces);
+    }
+    
+    
 }

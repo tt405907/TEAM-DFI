@@ -9,6 +9,14 @@ public abstract class Joueur {
 	private int lune, luneMax;
 	private int victoire;
 	
+	private boolean printing = false;
+
+	public void setPrinting(boolean printing) {
+		this.printing = printing;
+		de1.setPrinting(printing);
+		de2.setPrinting(printing);
+	}
+	
 	//Fonctions de bot
 	/**
 	 * Propose plusieurs faces au bot pour qu'il donne l'indice de la face qu'il souhaite appliquer dans le tableau.
@@ -91,12 +99,18 @@ public abstract class Joueur {
 	public void appliquerDe() {
 		de1.appliquerDe(this);
 		de2.appliquerDe(this);
-		System.out.println(this + ": " + de1.getLastFace() + " et " + de2.getLastFace());
+		if(printing) 
+		{
+			System.out.println(this + ": " + de1.getLastFace() + " et " + de2.getLastFace());
+		}
 	}
 	
-	public String getStatus() {
-		return this + " a " + this.getOr() + " or, " + this.getLune() + " éclats de lune, " + this.getSoleil() + " éclats de soleil et " + this.getVictoire() + " points de victoire";
-	}
+    public String getStatus() {
+        String resources = this + " a " + getOr() + " or, " + getLune() + " éclats de lune, " + getSoleil() + " éclats de soleil et " + getVictoire() + " points de victoire";
+        String strde1 = "\nDé 1 : " + de1;
+        String strde2 = "\nDé 2 : " + de2;
+        return resources + strde1 + strde2;
+    }
 	
 	@Override
 	public String toString() {
