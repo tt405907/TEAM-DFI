@@ -1,9 +1,11 @@
 # TEAM-DFI
 
-* tt405907 : Théo Tracol
-* Lykrast : Aymeric Picard Marchetto
-* aa303554 : Arnaud Arbona
-* ThomasPortet : Thomas Portet
+Comptes GitHub des membres de l'équipe :
+
+* **tt405907** = Théo Tracol
+* **Lykrast** = Aymeric Picard Marchetto
+* **aa303554** = Arnaud Arbona
+* **ThomasPortet** = Thomas Portet
 
 # Itérations
 
