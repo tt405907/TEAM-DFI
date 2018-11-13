@@ -3,6 +3,7 @@ package joueur;
 import java.util.List;
 import java.util.Random;
 
+import cartes.Carte;
 import de.Face;
 import sanctuaire.ListeAchat;
 
@@ -43,6 +44,21 @@ public class BotRandom extends Joueur {
 			Face cible = restantes.get(rand.nextInt(restantes.size()));
 			liste.acheter(cible);
 		}
+	}
+
+	@Override
+	public boolean tourSanctuaire() {
+		return rand.nextBoolean();
+	}
+
+	@Override
+	public boolean faireTourSupplementaire() {
+		return rand.nextBoolean();
+	}
+
+	@Override
+	public Carte faireAchatCartes(List<Carte> cartes) {
+		return cartes.get(rand.nextInt(cartes.size()));
 	}
 
 }

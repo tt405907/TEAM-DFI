@@ -1,7 +1,9 @@
 package joueur;
 
 import java.util.Comparator;
+import java.util.List;
 
+import cartes.Carte;
 import de.De;
 import de.Face;
 import de.Faces;
@@ -109,6 +111,35 @@ public class BotVictoire extends Joueur {
 			
 			liste.acheter(face);
 		}
+	}
+
+	@Override
+	public boolean tourSanctuaire() {
+		//Les cartes qui valent beaucoup de point de victoire coutent plus de 3
+		if(getLune() >= 3 || getSoleil() >= 3) return false;
+		//Les faces qui rapportent de la victoire coûtent 5 ou plus
+		else if(getOr() >= 5) return true;
+		//Sinon prends une carte à bas prix
+		else return false;
+	}
+
+	@Override
+	public boolean faireTourSupplementaire() {
+		// Oui si il peut prendre une carte ou une face de valeur
+		return (getLune() >= 3 || getSoleil() >= 5 || (getOr() >= 5));
+	}
+
+	@Override
+	public Carte faireAchatCartes(List<Carte> cartes) {
+		//N'achete pas si il ne peut rien acheter
+		if(cartes.isEmpty()) return null;
+		
+		//On prends la carte achetable  qui vaut le plus de point de victoire
+		Carte choix = cartes.stream()
+				.max(Comparator.comparingInt(Carte::getVictoire))
+				.orElse(null);
+		
+		return choix;
 	}
 
 }

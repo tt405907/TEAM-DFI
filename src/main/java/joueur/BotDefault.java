@@ -1,5 +1,8 @@
 package joueur;
 
+import java.util.List;
+
+import cartes.Carte;
 import de.Face;
 import sanctuaire.ListeAchat;
 
@@ -24,6 +27,21 @@ public class BotDefault extends Joueur {
 	@Override
 	public void faireAchats(ListeAchat liste) {
 		
+	}
+
+	@Override
+	public boolean tourSanctuaire() {
+		return false;
+	}
+
+	@Override
+	public boolean faireTourSupplementaire() {
+		return false;
+	}
+
+	@Override
+	public Carte faireAchatCartes(List<Carte> cartes) {
+		return null;
 	}
 
 }

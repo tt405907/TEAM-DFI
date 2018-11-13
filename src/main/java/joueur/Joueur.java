@@ -1,5 +1,8 @@
 package joueur;
 
+import java.util.List;
+
+import cartes.Carte;
 import de.De;
 import de.Face;
 import sanctuaire.ListeAchat;
@@ -34,6 +37,27 @@ public abstract class Joueur {
 	 * @param liste ListeAchat générée avec Sanctuaire.getAchatsPossible
 	 */
 	public abstract void faireAchats(ListeAchat liste);
+	/**
+	 * Demande au bot si il veut faire son tour au sanctuaire ou faire des exploits
+	 * @return true si sanctuaire, false si exploit
+	 */
+	public abstract boolean tourSanctuaire();
+	/**
+	 * demande si il veut un tour en plus pour 2 soleils, n'est pas appelé si il peut pas
+	 * @return true si oui false sinon
+	 */
+	public abstract boolean faireTourSupplementaire();
+	
+	/**
+	 * Demande au bot si il veut acheter une carte dans la liste donnée.
+	 * @param cartes que le bot peut acheter
+	 * @return la Carte que le bot veut acheter ou nul si il ne veut rien acheter
+	 */
+	public abstract Carte faireAchatCartes(List<Carte> cartes);
+	
+	public boolean peutFaireTourSupplementaire() {
+		return soleil >= 2;
+	}
 	
 	// Pour l'affichage
 	private String nom;
