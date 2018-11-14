@@ -72,8 +72,8 @@ public class Plateau {
 	}
 
 	public void acheter(Carte carte, Joueur acheteur) {
-		int p=getPortail(carte);
-		if (this.cartes.remove(carte) && p>=0) {
+		int p = getPortail(carte);
+		if (this.cartes.remove(carte)) {
 			// Dépense les ressources et donne les points de victoire au joueur
 			// si l'achat est effectif et la carte bien encore présente
 			carte.acheter(acheteur);
@@ -85,7 +85,7 @@ public class Plateau {
 			}
 
 			// Lance les dés de l'éventuel joueur chassé
-			if (portails[p] != null) {
+			if (p >= 0 && portails[p] != null) {
 				portails[p].appliquerDe();
 			}
 
