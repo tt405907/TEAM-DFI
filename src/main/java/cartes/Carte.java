@@ -6,6 +6,10 @@ public class Carte {
 	private int lune, soleil, victoire;
 	private String nom;
 	
+	public String getNom() {
+		return nom;
+	}
+
 	public Carte(String nom, int lune, int soleil, int victoire) {
 		this.lune = lune;
 		this.soleil = soleil;
