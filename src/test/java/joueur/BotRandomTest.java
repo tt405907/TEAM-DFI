@@ -94,7 +94,7 @@ class BotRandomTest {
         // Le bot va donc faire des achats de Face jusqu'a quand il ne dispose de plus d'assez d'Or pour acheter une Face
         // Pour vérifier cette méthode je vais check d'abord qu'il ne pouvait plus acheter d'Or avec ce qu'il lui restait
         // et voir que au moins un des 2 dés ont été changés
-        joueur.faireAchats(listeAchat);
+        joueur.faireAchatsFace(listeAchat);
         boolean test = false;
 
         // Je re fais une listeAchat pour check qu'avec l'Or restant on ne puisse pas acheter une Face dans le sanctuaire

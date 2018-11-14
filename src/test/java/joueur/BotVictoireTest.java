@@ -74,7 +74,7 @@ public class BotVictoireTest {
 		joueur.addOr(12);
         assertEquals(joueur.getOr(),12);
         listeAchat = sanctuaire.getAchatsPossible(joueur);
-        joueur.faireAchats(listeAchat);
+        joueur.faireAchatsFace(listeAchat);
         de1=joueur.getDe1();
         assertEquals(de1.getFace(0),face3);
         
@@ -87,7 +87,7 @@ public class BotVictoireTest {
         joueur.addOr(-2);
         assertEquals(joueur.getOr(),2);
         listeAchat = sanctuaire.getAchatsPossible(joueur);
-        joueur.faireAchats(listeAchat);
+        joueur.faireAchatsFace(listeAchat);
         de1=joueur.getDe1();
         de2=joueur.getDe2();
         assertEquals(de1.getFace(1),Faces.OR_1);

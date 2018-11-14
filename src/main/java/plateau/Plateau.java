@@ -61,10 +61,9 @@ public class Plateau {
 	// Donne l'indice du portail d'une carte
 	// si elle se trouve dans les cartes restantes, renvoie -1 sinon
 	public int getPortail(Carte carte) {
-		int i;
-		int j;
-		for (i = 0; i < ILES.length; i++) {
-			for (j = 0; j < ILES[i].length; j++) {
+
+		for (int i = 0; i < ILES.length; i++) {
+			for (int j = 0; j < ILES[i].length; j++) {
 				if (ILES[i][j] == carte)
 					return i;
 			}
@@ -73,24 +72,25 @@ public class Plateau {
 	}
 
 	public void acheter(Carte carte, Joueur acheteur) {
-		if (this.cartes.remove(carte)) {
+		int p=getPortail(carte);
+		if (this.cartes.remove(carte) && p>=0) {
 			// Dépense les ressources et donne les points de victoire au joueur
-			// si l'achat est effectif
+			// si l'achat est effectif et la carte bien encore présente
 			carte.acheter(acheteur);
+
 			// Retire l'acheteur de son éventuel portail actuel
-			int j;
-			for (j = 0; j <= portails.length; j++) {
+			for (int j = 0; j <= portails.length; j++) {
 				if (portails[j] == acheteur)
 					portails[j] = null;
 			}
 
 			// Lance les dés de l'éventuel joueur chassé
-			if (portails[this.getPortail(carte)] != null) {
-				portails[this.getPortail(carte)].appliquerDe();
+			if (portails[p] != null) {
+				portails[p].appliquerDe();
 			}
 
 			// Enfin, place l'acheteur sur le portail de la carte qu'il achète
-			portails[this.getPortail(carte)] = acheteur;
+			portails[p] = acheteur;
 		}
 	}
 }

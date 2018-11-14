@@ -36,7 +36,7 @@ public class BotRandom extends Joueur {
 	}
 
 	@Override
-	public void faireAchats(ListeAchat liste) {
+	public void faireAchatsFace(ListeAchat liste) {
 		while (!liste.isEmpty())
 		{
 			//Prends une face restante au hasard et l'achète

@@ -91,7 +91,7 @@ public class BotVictoire extends Joueur {
 	}
 
 	@Override
-	public void faireAchats(ListeAchat liste) {
+	public void faireAchatsFace(ListeAchat liste) {
 		while (!liste.isEmpty())
 		{
 			//Prends le dé rapportant le moins de point de victoire

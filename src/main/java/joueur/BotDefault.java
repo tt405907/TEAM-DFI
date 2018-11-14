@@ -25,7 +25,7 @@ public class BotDefault extends Joueur {
 	}
 
 	@Override
-	public void faireAchats(ListeAchat liste) {
+	public void faireAchatsFace(ListeAchat liste) {
 		
 	}
 

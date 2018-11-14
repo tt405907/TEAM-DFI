@@ -36,7 +36,7 @@ public abstract class Joueur {
 	 * Demande au bot de faire ses achats dans la liste d'achat donnée.
 	 * @param liste ListeAchat générée avec Sanctuaire.getAchatsPossible
 	 */
-	public abstract void faireAchats(ListeAchat liste);
+	public abstract void faireAchatsFace(ListeAchat liste);
 	/**
 	 * Demande au bot si il veut faire son tour au sanctuaire ou faire des exploits
 	 * @return true si sanctuaire, false si exploit
