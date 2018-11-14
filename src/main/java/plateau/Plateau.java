@@ -23,8 +23,8 @@ public class Plateau {
 			{ new Carte("Les Ailes de La Gardienne", 0, 2, 4), new Carte("Le Minotaure", 0, 3, 8) },
 			{ new Carte("L'Ancien", 0, 1, 0), new Carte("Les Herbes Folles", 0, 1, 2) } };
 
-	// portails représente l'emplacement de chaque joueur sur les différents
-	// portails.
+	// portails représente l'emplacement de chaque joueur
+	// sur les différents portails
 	private Joueur portails[] = new Joueur[ILES.length];
 
 	// ce constructeur sera uniquement utile pour les tests a priori
@@ -53,7 +53,7 @@ public class Plateau {
 	// Donne les cartes distinctes que le joueur j peut acheter
 	public List<Carte> getCartesAchetables(Joueur j) {
 		List<Carte> disponibles = cartes.stream()
-				.filter(c -> c.getPrixLune() <= j.getLune() && c.getPrixSoleil() <= j.getSoleil()).distinct()
+				.filter(c -> c.peutAcheter(j)).distinct()
 				.collect(Collectors.toCollection(ArrayList::new));
 		return disponibles;
 	}
@@ -62,9 +62,11 @@ public class Plateau {
 	// si elle se trouve dans les cartes restantes, renvoie -1 sinon
 	public int getPortail(Carte carte) {
 		int i;
-		for (i = 0; i <= ILES.length; i++) {
-			if (Arrays.binarySearch(ILES[i], carte) >= 0) {
-				return i;
+		int j;
+		for (i = 0; i < ILES.length; i++) {
+			for (j = 0; j < ILES[i].length; j++) {
+				if (ILES[i][j] == carte)
+					return i;
 			}
 		}
 		return -1;
@@ -74,21 +76,19 @@ public class Plateau {
 		if (this.cartes.remove(carte)) {
 			// Dépense les ressources et donne les points de victoire au joueur
 			// si l'achat est effectif
-			acheteur.addLune(-carte.getPrixLune());
-			acheteur.addSoleil(-carte.getPrixSoleil());
-			acheteur.addVictoire(carte.getVictoire());
-
-			// Retire l'acheteur de son portail actuel
-			for (Joueur j : portails) {
-				if (j.equals(acheteur))
-					j = null;
+			carte.acheter(acheteur);
+			// Retire l'acheteur de son éventuel portail actuel
+			int j;
+			for (j = 0; j <= portails.length; j++) {
+				if (portails[j] == acheteur)
+					portails[j] = null;
 			}
 
 			// Lance les dés de l'éventuel joueur chassé
 			if (portails[this.getPortail(carte)] != null) {
 				portails[this.getPortail(carte)].appliquerDe();
 			}
-			
+
 			// Enfin, place l'acheteur sur le portail de la carte qu'il achète
 			portails[this.getPortail(carte)] = acheteur;
 		}
