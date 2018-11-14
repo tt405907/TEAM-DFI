@@ -79,7 +79,7 @@ public class Plateau {
 			carte.acheter(acheteur);
 
 			// Retire l'acheteur de son éventuel portail actuel
-			for (int j = 0; j <= portails.length; j++) {
+			for (int j = 0; j < portails.length; j++) {
 				if (portails[j] == acheteur)
 					portails[j] = null;
 			}
