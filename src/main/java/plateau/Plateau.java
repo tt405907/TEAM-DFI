@@ -90,7 +90,9 @@ public class Plateau {
 			}
 
 			// Enfin, place l'acheteur sur le portail de la carte qu'il achète
-			portails[p] = acheteur;
+			if (p >= 0)
+				portails[p] = acheteur;
+
 		}
 	}
 }

@@ -70,7 +70,9 @@ public class Partie {
 			faireAchats(act);
 
 			if (act.peutFaireTourSupplementaire() && act.faireTourSupplementaire()) {
-				System.out.println("Tour supplémentaire");
+				if (printing) {
+					System.out.println("Tour supplémentaire");
+				}
 				faireAchats(act);
 			}
 
