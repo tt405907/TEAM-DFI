@@ -21,4 +21,13 @@ Pour les tests :
 
 # Diagrammes de l'itération
 
+Diagramme de classe 
+
 ![Diagram](Diagram-Iteration3-16-11.png)
+
+Diagramme de séquence d'un tour de jeu
+
+![Diagram](SequenceDiagram-Iteration3-16-11.png)
+
+
+Le diagramme représente un tour de jeu pour un seul joueur, mais les ifs ne sont pas représentés.
