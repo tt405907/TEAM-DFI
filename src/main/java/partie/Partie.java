@@ -17,6 +17,7 @@ public class Partie {
 
 	public void setPrinting(boolean printing) {
 		this.printing = printing;
+		plateau.setPrinting(printing);
 		for (Joueur j : joueurs) {
 			j.setPrinting(printing);
 		}

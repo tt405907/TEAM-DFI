@@ -58,6 +58,7 @@ public class BotRandom extends Joueur {
 
 	@Override
 	public Carte faireAchatCartes(List<Carte> cartes) {
+		if (cartes.isEmpty()) return null;
 		return cartes.get(rand.nextInt(cartes.size()));
 	}
 
