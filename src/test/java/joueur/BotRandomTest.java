@@ -1,5 +1,6 @@
 package joueur;
 
+import cartes.Carte;
 import de.De;
 import de.Face;
 import de.Faces;
@@ -7,6 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sanctuaire.ListeAchat;
 import sanctuaire.Sanctuaire;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -79,7 +84,7 @@ class BotRandomTest {
     }
 
     @Test
-    void faireAchats()
+    void faireAchatsFace()
     {
         // Nos Dés originaux
         De de1 = new De(De.de1);
@@ -115,6 +120,28 @@ class BotRandomTest {
             {
                 test = true;
             }
+        }
+        assertEquals(test,true);
+
+    }
+
+    @Test
+    void faireAchatCartes()
+    {
+        // Nous vérifions si y'a plus de cartes dans la liste il nous retourne bien null
+        Carte carte1 = new Carte("Jadore",3,3,5);
+        Carte carte2 = new Carte("Géant",5,0,10);
+        Carte carte3 = new Carte("Face",5,2,8);
+        List<Carte> listeCarte = Arrays.asList();
+        assertEquals(joueur.faireAchatCartes(listeCarte),null);
+
+        // Testons qu'ils nous renvoit bien une des cartes aléatoires de la liste
+        listeCarte = Arrays.asList(carte1,carte2,carte3);
+        boolean test = false;
+        Carte carteDonne = joueur.faireAchatCartes(listeCarte);
+        if ( carteDonne == carte1 || carteDonne == carte2 || carteDonne == carte3)
+        {
+            test = true;
         }
         assertEquals(test,true);
 

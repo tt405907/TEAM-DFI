@@ -1,9 +1,14 @@
 package joueur;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import cartes.Carte;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import de.*;
 import sanctuaire.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class BotVictoireTest {
 	private Joueur joueur;
@@ -64,7 +69,7 @@ public class BotVictoireTest {
 	}
 	
 	@Test
-	void faireAchats()
+	void faireAchatsFace()
 	{
 		/**
 		 * vérifions que le bot n'achète pas la face la plus chère (face2 qui vaut 12 or mais rapporte seulemetnt 2 PdV)
@@ -92,6 +97,61 @@ public class BotVictoireTest {
         de2=joueur.getDe2();
         assertEquals(de1.getFace(1),Faces.OR_1);
         assertEquals(de2.getFace(0),Faces.OR_1);
+	}
+
+
+	@Test
+	void tourSanctuaire()
+	{
+		// Nous vérifions si il a assez de Ressources pour acheter les plus basses cartes qui donnent des points de victoires (false) si doit acheter une carte
+		joueur.addLune(5);
+		assertEquals(joueur.tourSanctuaire(),false);
+		joueur.addSoleil(5);
+		assertEquals(joueur.tourSanctuaire(),false);
+		// Nous vérifions aussi que dans le cas ou il ne peut acheter une carte il regarde si il peut prendre une face qui donne des points de victoires (true)
+		joueur.addSoleil(-5);
+		joueur.addLune(-5);
+		joueur.addOr(5);
+		assertEquals(joueur.tourSanctuaire(),true);
+		// Dans le pire des cas il doit comme même faire un choix donc on lui dit d'aller à exploit (false)
+		joueur.addOr(-5);
+		assertEquals(joueur.tourSanctuaire(),false);
+	}
+
+	@Test
+	void faireTourSupplementaire()
+	{
+		// Renvoie un boolean si il peut acheter une face avec l'or nécessaire
+		joueur.addOr(5);
+		assertEquals(joueur.faireTourSupplementaire(),true);
+		// Renvoie le boolean d'un joueur qui ne dispose pas d'assez d'Or pour acheter ni une carte qui donne des points de victoires
+		assertEquals(joueur.faireTourSupplementaire(),false);
+		// Renvoie un boolean si il peut faire un tour supp avec les soleils necessaire pour acheter la plus basse carte qui donne des points de victoires
+		joueur.addOr(-5);
+		joueur.addSoleil(3);
+		assertEquals(joueur.faireTourSupplementaire(),true);
+		// // Renvoie un boolean si il peut faire un tour supp avec les Lunes necessaire pour acheter la plus basse carte qui donne des points de victoires
+		joueur.addLune(3);
+		assertEquals(joueur.faireTourSupplementaire(),true);
+
+	}
+
+	@Test
+	void faireAchatCartes()
+	{
+		// Nous allons vérifier que la méthode renvoie null si le joueur ne peut acheter aucune cartes
+		Carte carte1 = new Carte("Jadore",3,3,5);
+		Carte carte2 = new Carte("Géant",5,0,10);
+		Carte carte3 = new Carte("Face",5,2,8);
+		List<Carte> listeCarte = Arrays.asList(carte1,carte2,carte3);
+		assertEquals(joueur.faireAchatCartes(listeCarte),null);
+		// Vérifions qu'il va bien me donner la carte qui me donne le plus de points de victoires
+		joueur.addLune(5);
+		assertEquals(joueur.faireAchatCartes(listeCarte),carte2);
+
+
+
+
 	}
 
 }
