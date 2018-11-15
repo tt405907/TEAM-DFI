@@ -21,4 +21,4 @@ Pour les tests :
 
 # Diagrammes de l'itération
 
-//à ajouter
+![Diagram](Diagram-Iteration3-16-11.png)
