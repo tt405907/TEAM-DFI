@@ -3,6 +3,7 @@ package joueur;
 import java.util.List;
 
 import cartes.Carte;
+import de.De;
 import de.Face;
 import sanctuaire.ListeAchat;
 
@@ -42,6 +43,12 @@ public class BotDefault extends Joueur {
 	@Override
 	public Carte faireAchatCartes(List<Carte> cartes) {
 		return null;
+	}
+
+
+	@Override
+	public De choixFaveurMineure() {
+		return de1;
 	}
 
 }

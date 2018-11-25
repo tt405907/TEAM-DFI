@@ -142,4 +142,9 @@ public class BotVictoire extends Joueur {
 		return choix;
 	}
 
+	@Override
+	public De choixFaveurMineure() {
+		return valeurVictoire(de1) > valeurVictoire(de2) ? de1 : de2;
+	}
+
 }

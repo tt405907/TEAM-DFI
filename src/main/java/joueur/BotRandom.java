@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import cartes.Carte;
+import de.De;
 import de.Face;
 import sanctuaire.ListeAchat;
 
@@ -60,6 +61,11 @@ public class BotRandom extends Joueur {
 	public Carte faireAchatCartes(List<Carte> cartes) {
 		if (cartes.isEmpty()) return null;
 		return cartes.get(rand.nextInt(cartes.size()));
+	}
+
+	@Override
+	public De choixFaveurMineure() {
+		return rand.nextBoolean() ? de1 : de2;
 	}
 
 }
