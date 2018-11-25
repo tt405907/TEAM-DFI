@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import cartes.Carte;
 import joueur.Joueur;
+import partie.Partie;
 
 public class Plateau {
 
 	private List<Carte> cartes;
 	
-	private boolean printing = false;
-	public void setPrinting(boolean printing) {
-		this.printing = printing;
+	private Partie partie;
+	public void setPartie(Partie partie) {
+		this.partie = partie;
 	}
 
 	// nos cartes de bases, chacune en un exemplaire et sur un portail prédéfini par
@@ -83,24 +84,7 @@ public class Plateau {
 			// si l'achat est effectif et la carte bien encore présente
 			carte.acheter(acheteur);
 			
-			if (printing)
-			{
-				String cost = "(gratuitement)";
-				if (carte.getPrixLune() > 0 && carte.getPrixSoleil() > 0)
-				{
-					cost = "(pour " + carte.getPrixLune() + " lune et " + carte.getPrixSoleil() + " soleil)";
-				}
-				else if (carte.getPrixLune() > 0)
-				{
-					cost = "(pour " + carte.getPrixLune() + " lune)";
-				}
-				else if (carte.getPrixSoleil() > 0)
-				{
-					cost = "(pour " + carte.getPrixSoleil() + " soleil)";
-				}
-				
-				System.out.println("Exploit: " + carte + " +" + carte.getVictoire() + " victoire " + cost);
-			}
+			if (partie != null) partie.printExploit(acheteur, carte);
 
 			// Retire l'acheteur de son éventuel portail actuel
 			for (int j = 0; j < portails.length; j++) {
@@ -110,7 +94,7 @@ public class Plateau {
 
 			// Lance les dés de l'éventuel joueur chassé
 			if (p >= 0 && portails[p] != null) {
-				if (printing) System.out.println(portails[p] + " reçoit une faveur des dieux pour avoir bougé");
+				if (partie != null) partie.printChasse(portails[p]);
 				portails[p].appliquerDe();
 			}
 

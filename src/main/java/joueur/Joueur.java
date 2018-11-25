@@ -5,6 +5,7 @@ import java.util.List;
 import cartes.Carte;
 import de.De;
 import de.Face;
+import partie.Partie;
 import sanctuaire.ListeAchat;
 public abstract class Joueur {
 	private int or, orMax;
@@ -12,12 +13,12 @@ public abstract class Joueur {
 	private int lune, luneMax;
 	private int victoire;
 	
-	private boolean printing = false;
+	private Partie partie;
 
-	public void setPrinting(boolean printing) {
-		this.printing = printing;
-		de1.setPrinting(printing);
-		de2.setPrinting(printing);
+	public void setPartie(Partie partie) {
+		this.partie = partie;
+		de1.setPartie(partie);
+		de2.setPartie(partie);
 	}
 	
 	//Fonctions de bot
@@ -74,6 +75,8 @@ public abstract class Joueur {
 		// Des initaux
 		de1 = new De(De.de1);
 		de2 = new De(De.de2);
+		de1.setPartie(partie);
+		de2.setPartie(partie);
 	}
 
 	public int getOr() {
@@ -123,14 +126,15 @@ public abstract class Joueur {
 	public void appliquerDe() {
 		de1.appliquerDe(this);
 		de2.appliquerDe(this);
-		if(printing) 
-		{
-			System.out.println(this + ": " + de1.getLastFace() + " et " + de2.getLastFace());
-		}
+		if(partie != null) partie.printRoll(this, de1.getLastFace(), de2.getLastFace());
 	}
 	
     public String getStatus() {
-        String resources = this + " a " + getOr() + " or, " + getLune() + " éclats de lune, " + getSoleil() + " éclats de soleil et " + getVictoire() + " points de victoire";
+        String resources = this + " a "
+        		+ getOr() + "/" + orMax + " or, "
+        		+ getLune() + "/" + luneMax + " éclats de lune, "
+        		+ getSoleil() + "/" + soleilMax + " éclats de soleil et "
+        		+ getVictoire() + " points de victoire";
         String strde1 = "\nDé 1 : " + de1;
         String strde2 = "\nDé 2 : " + de2;
         return resources + strde1 + strde2;

@@ -3,6 +3,8 @@ package partie;
 import java.util.ArrayList;
 import java.util.List;
 
+import cartes.Carte;
+import de.Face;
 import joueur.Joueur;
 import plateau.Plateau;
 import sanctuaire.Sanctuaire;
@@ -17,10 +19,6 @@ public class Partie {
 
 	public void setPrinting(boolean printing) {
 		this.printing = printing;
-		plateau.setPrinting(printing);
-		for (Joueur j : joueurs) {
-			j.setPrinting(printing);
-		}
 	}
 
 	public Partie(Joueur... joueurs) {
@@ -33,6 +31,11 @@ public class Partie {
 
 		sanctuaire = new Sanctuaire(joueurs.length);
 		plateau = new Plateau(joueurs.length);
+		
+		plateau.setPartie(this);
+		for (Joueur j : joueurs) {
+			j.setPartie(this);
+		}
 	}
 
 	/**
@@ -121,6 +124,46 @@ public class Partie {
 			}
 		}
 		return gagnant;
+	}
+	
+	//Fonctions d'affichage
+	//Un joueur achète une carte
+	public void printExploit(Joueur acheteur, Carte carte) {
+		if (!printing) return;
+
+		String cost = "(gratuitement)";
+		if (carte.getPrixLune() > 0 && carte.getPrixSoleil() > 0)
+		{
+			cost = "(pour " + carte.getPrixLune() + " lune et " + carte.getPrixSoleil() + " soleil)";
+		}
+		else if (carte.getPrixLune() > 0)
+		{
+			cost = "(pour " + carte.getPrixLune() + " lune)";
+		}
+		else if (carte.getPrixSoleil() > 0)
+		{
+			cost = "(pour " + carte.getPrixSoleil() + " soleil)";
+		}
+		
+		System.out.println("Exploit: " + carte + " +" + carte.getVictoire() + " victoire " + cost);
+	}
+	
+	//Un joueur est chassé de son île
+	public void printChasse(Joueur chasse) {
+		if (!printing) return;
+		System.out.println(chasse + " reçoit une faveur des dieux pour avoir bougé");
+	}
+	
+	//Un joueur a lancé ces dés
+	public void printRoll(Joueur joueur, Face face1, Face face2) {
+		if (!printing) return;
+		System.out.println(joueur + ": " + face1 + " et " + face2);
+	}
+	
+	//Un dé se fait forger une face
+	public void printForge(Face old, Face newz) {
+		if (!printing) return;
+		System.out.println("Forge: " + old + " -> " + newz + " (pour " + newz.getPrix() + " or)");
 	}
 
 }

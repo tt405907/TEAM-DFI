@@ -2,7 +2,9 @@ package de;
 
 import java.util.Arrays;
 import java.util.Random;
+
 import joueur.Joueur;
+import partie.Partie;
 
 /**
  * Classe permettant de simuler un De pour un joueur , un De a 6 faces
@@ -16,10 +18,10 @@ public class De
     //Dernière face lancée, pour l'affichage
     private int lastIndex = 0;
     
-    private boolean printing = false;
+    private Partie partie;
 
-	public void setPrinting(boolean printing) {
-		this.printing = printing;
+	public void setPartie(Partie partie) {
+		this.partie = partie;
 	}
 
     // Nos Des initaux
@@ -76,10 +78,7 @@ public class De
     {
     	Face old = allFaces[indice];
     	allFaces[indice] = face;
-    	if (printing) 
-    	{
-    		System.out.println("Forge: " + old + " -> " + face + " (pour " + face.getPrix() + " or)");
-    	}
+    	if (partie != null) partie.printForge(old, face);
     }
     
     @Override
