@@ -1,14 +1,16 @@
 package joueur;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cartes.Carte;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import de.*;
-import sanctuaire.*;
 
-import java.util.Arrays;
-import java.util.List;
+import cartes.Carte;
+import de.De;
+import de.Face;
+import de.Faces;
+import plateau.Plateau;
+import sanctuaire.ListeAchat;
+import sanctuaire.Sanctuaire;
 
 public class BotVictoireTest {
 	private Joueur joueur;
@@ -124,11 +126,11 @@ public class BotVictoireTest {
 		// Renvoie un boolean si il peut acheter une face avec l'or nécessaire
 		joueur.addOr(5);
 		assertEquals(joueur.faireTourSupplementaire(),true);
-		// Renvoie le boolean d'un joueur qui ne dispose pas d'assez d'Or pour acheter ni une carte qui donne des points de victoires
-		assertEquals(joueur.faireTourSupplementaire(),false);
 		// Renvoie un boolean si il peut faire un tour supp avec les soleils necessaire pour acheter la plus basse carte qui donne des points de victoires
 		joueur.addOr(-5);
-		joueur.addSoleil(3);
+		// Renvoie le boolean d'un joueur qui ne dispose pas d'assez d'Or pour acheter ni une carte qui donne des points de victoires
+		assertEquals(joueur.faireTourSupplementaire(),false);
+		joueur.addSoleil(5);
 		assertEquals(joueur.faireTourSupplementaire(),true);
 		// // Renvoie un boolean si il peut faire un tour supp avec les Lunes necessaire pour acheter la plus basse carte qui donne des points de victoires
 		joueur.addLune(3);
@@ -143,11 +145,11 @@ public class BotVictoireTest {
 		Carte carte1 = new Carte("Jadore",3,3,5);
 		Carte carte2 = new Carte("Géant",5,0,10);
 		Carte carte3 = new Carte("Face",5,2,8);
-		List<Carte> listeCarte = Arrays.asList(carte1,carte2,carte3);
-		assertEquals(joueur.faireAchatCartes(listeCarte),null);
+		Plateau plateau = new Plateau(carte1,carte2,carte3);
+		assertEquals(joueur.faireAchatCartes(plateau.getCartesAchetables(joueur)),null);
 		// Vérifions qu'il va bien me donner la carte qui me donne le plus de points de victoires
 		joueur.addLune(5);
-		assertEquals(joueur.faireAchatCartes(listeCarte),carte2);
+		assertEquals(joueur.faireAchatCartes(plateau.getCartesAchetables(joueur)),carte2);
 
 
 
