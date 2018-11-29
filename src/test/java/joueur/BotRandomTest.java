@@ -1,19 +1,19 @@
 package joueur;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import cartes.Carte;
 import de.De;
 import de.Face;
 import de.Faces;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import sanctuaire.ListeAchat;
 import sanctuaire.Sanctuaire;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BotRandomTest {
     private Joueur joueur;
@@ -116,7 +116,7 @@ class BotRandomTest {
             {
                 test = true;
             }
-            if(joueur.getDe2().getFace(i) != de1.getFace(i))
+            if(joueur.getDe2().getFace(i) != de2.getFace(i))
             {
                 test = true;
             }
