@@ -126,8 +126,8 @@ class PlateauTest {
 
 		// joueur 2 fait la même chose et remplace joueur 1 sur l'île
 		plateau.acheter(meduse, joueur2);
-		assertEquals(0, joueur.getSoleil());
-		assertEquals(14, joueur.getVictoire());
+		assertEquals(0, joueur2.getSoleil());
+		assertEquals(14, joueur2.getVictoire());
 
 		// vérifie que joueur 1 a reçu une faveur vu qu'il a été déplacé
 		assertTrue(joueur.getOr() > 0 || joueur.getLune() > 0 || joueur.getSoleil() > 0 || joueur.getVictoire() > 14);
