@@ -1,8 +1,10 @@
 package joueur;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cartes.Carte;
+import cartes.CarteRenfort;
 import de.De;
 import de.Face;
 import partie.Partie;
@@ -13,6 +15,8 @@ public abstract class Joueur {
 	private int soleil, soleilMax;
 	private int lune, luneMax;
 	private int victoire;
+	
+	private List<CarteRenfort> renforts;
 
 	private Partie partie;
 
@@ -69,9 +73,17 @@ public abstract class Joueur {
 	 */
 	public abstract Carte faireAchatCartes(List<Carte> cartes);
 
-	//choisit le dé que le joueur veut lancer lors d'une faveur mineure
-	
+	/**
+	 * choisit le dé que le joueur veut lancer lors d'une faveur mineure
+	 */
 	public abstract De choixFaveurMineure();
+	
+	/**
+	 * demande au bot quelle carte renfort il veut activer dans la liste
+	 * de ceux qu'il n'a pas encore activee (donnee en parametre) ou null
+	 * si il veut finir
+	 */
+	public abstract CarteRenfort choixRenfort(List<CarteRenfort> liste);
 
 	public boolean peutFaireTourSupplementaire() {
 		return soleil >= 2;
@@ -93,6 +105,27 @@ public abstract class Joueur {
 		de2 = new De(De.de2);
 		de1.setPartie(partie);
 		de2.setPartie(partie);
+		
+		renforts = new ArrayList<>();
+	}
+	
+	public void addRenfort(CarteRenfort carte) {
+		renforts.add(carte);
+	}
+	
+	// utilise les cartes renforts du joueur dans l'ordre qu'il veut
+	public final void utiliserRenforts() {
+		List<CarteRenfort> restants = new ArrayList<>(renforts);
+		
+		while (!restants.isEmpty()) {
+			CarteRenfort choisie = choixRenfort(restants);
+			if (choisie == null) break;
+			
+			if (choisie.peutActiver(this) && restants.remove(choisie)) {
+				partie.printRenfort(choisie);
+				choisie.effetRenfort(this);
+			}
+		}
 	}
 
 	public int getOr() {

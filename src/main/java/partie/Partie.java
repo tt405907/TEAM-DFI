@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cartes.Carte;
+import cartes.CarteRenfort;
 import de.Face;
 import joueur.Joueur;
 import plateau.Plateau;
@@ -67,6 +68,9 @@ public class Partie {
 					j.appliquerDe();
 				}
 			}
+			
+			act.utiliserRenforts();
+			
 			if (printing) {
 				System.out.println("Action");
 			}
@@ -170,6 +174,12 @@ public class Partie {
 		if (!printing)
 			return;
 		System.out.println("Forge: " + old + " -> " + newz + " (pour " + newz.getPrix() + " or)");
+	}
+	
+	public void printRenfort(CarteRenfort carte) {
+		if (!printing)
+			return;
+		System.out.println("Renfort: " + carte);
 	}
 
 }

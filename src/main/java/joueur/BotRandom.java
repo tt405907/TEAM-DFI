@@ -2,8 +2,10 @@ package joueur;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import cartes.Carte;
+import cartes.CarteRenfort;
 import de.De;
 import de.Face;
 import sanctuaire.ListeAchat;
@@ -66,6 +68,17 @@ public class BotRandom extends Joueur {
 	@Override
 	public De choixFaveurMineure() {
 		return rand.nextBoolean() ? de1 : de2;
+	}
+
+	@Override
+	public CarteRenfort choixRenfort(List<CarteRenfort> liste) {
+		// ne regarde que les cartes utilisables
+		List<CarteRenfort> utilisables = liste.stream()
+				.filter(c -> c.peutActiver(this))
+				.collect(Collectors.toList());
+		
+		if (utilisables.isEmpty()) return null;
+		return utilisables.get(rand.nextInt(utilisables.size()));
 	}
 
 }

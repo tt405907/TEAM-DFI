@@ -4,6 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import cartes.Carte;
+import cartes.CarteRenfort;
+import cartes.Cartes;
 import de.De;
 import de.Face;
 import de.Faces;
@@ -145,6 +147,19 @@ public class BotVictoire extends Joueur {
 	@Override
 	public De choixFaveurMineure() {
 		return valeurVictoire(de1) > valeurVictoire(de2) ? de1 : de2;
+	}
+
+	@Override
+	public CarteRenfort choixRenfort(List<CarteRenfort> liste) {
+		// utilise les sabots d'abord car peut donner de l'or pour l'ancien
+		if (peutUtiliser(liste, Cartes.SABOTS)) return Cartes.SABOTS;
+		else if (peutUtiliser(liste, Cartes.AILES)) return Cartes.AILES;
+		else if (peutUtiliser(liste, Cartes.ANCIEN)) return Cartes.ANCIEN;
+		else return null;
+	}
+	
+	private boolean peutUtiliser(List<CarteRenfort> disponibles, CarteRenfort tente) {
+		return disponibles.contains(tente) && tente.peutActiver(this);
 	}
 
 }
