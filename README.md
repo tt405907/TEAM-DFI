@@ -20,13 +20,13 @@ Comptes GitHub des membres de l'équipe :
   * Achat des cartes avec Soleil et Lune et qui rapportent uniquement des points de victoire.
   * Développement de stratégie très simple qui essaye de maximiser les points de victoire via l'achat de carte.
   
-* 23/11 - Ajout des Cartes simples
+* 30/11 - Ajout des Cartes simples
   * Ajout d'une partie des cartes avec effets les plus simples
   * Mise à niveau de l'IA de base pour une utilisation très simple de ces cartes.
   
-* 30/11 - Ajout des dernières Cartes de la version de base 
+* 07/12 - Ajout des dernières Cartes de la version de base 
   * Finalisation de l'ajout des cartes complexes tels le Minautore.
   
-* 07/12 - Simulation de masse 
+* 16/12 - Simulation de masse 
   * Simulation de plusieurs parties à la suite.
   * Développement de stratégie plus complexes pour l'IA.
