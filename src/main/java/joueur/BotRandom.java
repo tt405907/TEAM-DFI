@@ -81,6 +81,8 @@ public class BotRandom extends Joueur {
 		return utilisables.get(rand.nextInt(utilisables.size()));
 	}
 
+	// à chaque fois qu'il peut placer n Or ,
+	// ce bot en place un nombre aléatoire entre 0 et n inclus.
 	@Override
 	public int changeOrEnMarteau(int orChangeable) {
 		return rand.nextInt(orChangeable+1);
