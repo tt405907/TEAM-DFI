@@ -9,7 +9,8 @@ import de.Face;
 import sanctuaire.ListeAchat;
 
 /**
- * Implémentation de Joueur avec des méthodes par défaut pour les tests qui n'ont pas besoin de ces méthodes.
+ * Implémentation de Joueur avec des méthodes par défaut pour les tests qui
+ * n'ont pas besoin de ces méthodes.
  */
 public class BotDefault extends Joueur {
 	public BotDefault(String nom) {
@@ -28,7 +29,7 @@ public class BotDefault extends Joueur {
 
 	@Override
 	public void faireAchatsFace(ListeAchat liste) {
-		
+
 	}
 
 	@Override
@@ -46,7 +47,6 @@ public class BotDefault extends Joueur {
 		return null;
 	}
 
-
 	@Override
 	public De choixFaveurMineure() {
 		return de1;
@@ -55,6 +55,11 @@ public class BotDefault extends Joueur {
 	@Override
 	public CarteRenfort choixRenfort(List<CarteRenfort> liste) {
 		return null;
+	}
+
+	@Override
+	public int changeOrEnMarteau(int orChangeable) {
+		return 0;
 	}
 
 }

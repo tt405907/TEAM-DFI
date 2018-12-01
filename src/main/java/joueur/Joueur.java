@@ -5,6 +5,7 @@ import java.util.List;
 
 import cartes.Carte;
 import cartes.CarteRenfort;
+import cartes.UnMarteau;
 import de.De;
 import de.Face;
 import partie.Partie;
@@ -15,8 +16,10 @@ public abstract class Joueur {
 	private int soleil, soleilMax;
 	private int lune, luneMax;
 	private int victoire;
-	
+
 	private List<CarteRenfort> renforts;
+
+	private List<UnMarteau> marteaux;
 
 	private Partie partie;
 
@@ -77,13 +80,20 @@ public abstract class Joueur {
 	 * choisit le dé que le joueur veut lancer lors d'une faveur mineure
 	 */
 	public abstract De choixFaveurMineure();
-	
+
 	/**
-	 * demande au bot quelle carte renfort il veut activer dans la liste
-	 * de ceux qu'il n'a pas encore activee (donnee en parametre) ou null
-	 * si il veut finir
+	 * demande au bot quelle carte renfort il veut activer dans la liste de ceux
+	 * qu'il n'a pas encore activee (donnee en parametre) ou null si il veut finir
 	 */
 	public abstract CarteRenfort choixRenfort(List<CarteRenfort> liste);
+
+	/**
+	 * Demande au bot combien d'or veut-il mettre dans son marteau
+	 * 
+	 * @param or : Or qu'il est possible de placer dans le marteau.
+	 * @return Or que le bot veut placer dans le marteau.
+	 */
+	public abstract int changeOrEnMarteau(int or);
 
 	public boolean peutFaireTourSupplementaire() {
 		return soleil >= 2;
@@ -105,22 +115,23 @@ public abstract class Joueur {
 		de2 = new De(De.de2);
 		de1.setPartie(partie);
 		de2.setPartie(partie);
-		
+
 		renforts = new ArrayList<>();
 	}
-	
+
 	public void addRenfort(CarteRenfort carte) {
 		renforts.add(carte);
 	}
-	
+
 	// utilise les cartes renforts du joueur dans l'ordre qu'il veut
 	public final void utiliserRenforts() {
 		List<CarteRenfort> restants = new ArrayList<>(renforts);
-		
+
 		while (!restants.isEmpty()) {
 			CarteRenfort choisie = choixRenfort(restants);
-			if (choisie == null) break;
-			
+			if (choisie == null)
+				break;
+
 			if (choisie.peutActiver(this) && restants.remove(choisie)) {
 				partie.printRenfort(choisie);
 				choisie.effetRenfort(this);
@@ -145,6 +156,15 @@ public abstract class Joueur {
 	}
 
 	public void addOr(int or) {
+		if (getNextMarteau() != null && or > 0) {
+			int c = changeOrEnMarteau(or);
+			if (c > or)
+				c = or;
+			if (c > 0) {
+				getNextMarteau().effetAddOr(c);
+				or -= c;
+			}
+		}
 		// int old = this.or;
 		this.or = Math.min(orMax, Math.max(0, this.or + or));
 		// if (old != this.or) System.out.println(this + ": Or " + old + " -> " +
@@ -181,8 +201,8 @@ public abstract class Joueur {
 		if (partie != null)
 			partie.printRoll(this, de1.getLastFace(), de2.getLastFace());
 	}
-	
-	//	Effectue un lancé du dé choisi par le joueur dans choixFaveurMineure n fois 
+
+	// Effectue un lancé du dé choisi par le joueur dans choixFaveurMineure n fois
 	public void faveurMineure(int n) {
 		De deALancer = choixFaveurMineure();
 		for (int i = 0; i < n; i++) {
@@ -237,4 +257,37 @@ public abstract class Joueur {
 	public void setLuneMax(int luneMax) {
 		this.luneMax = luneMax;
 	}
+
+	/**
+	 * Supprime le marteau donné en paramètre de la liste des marteaux du joueur.
+	 * Cette méthode est appellée quand un marteau est rempli entièrement.
+	 * 
+	 * @param marteau : Le marteau rempli à supprimer de marteaux.
+	 */
+	public void delMarteau(UnMarteau marteau) {
+		this.marteaux.remove(marteau);
+	}
+
+	/**
+	 * @return Le prochain marteau à remplir. Il est à noter que les marteaux sont
+	 *         gérés avec la méthode FIFO : le premier marteau ajouté et le premier
+	 *         à être incrémenté.
+	 */
+	public UnMarteau getNextMarteau() {
+		if (this.marteaux.isEmpty())
+			return null;
+		return this.marteaux.get(0);
+	}
+
+	/**
+	 * Le marteau est ajouté à la fin de la liste et verra son jeton incrémenté
+	 * quand tous les autres marteaux ajoutés avant lui seront finis.
+	 * 
+	 * @param marteau : Le marteau qu'on veut ajouter
+	 */
+	public void addMarteau(UnMarteau marteau) {
+		this.marteaux.add(marteau);
+
+	}
+
 }

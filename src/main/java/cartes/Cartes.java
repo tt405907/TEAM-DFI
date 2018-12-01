@@ -4,7 +4,7 @@ package cartes;
 public class Cartes {
 	private Cartes() {}
 	
-	public static final Carte MARTEAU = new Carte("Le Marteau du Forgeron", 1, 0, 0);
+	public static final Carte MARTEAU = new MarteauDuForgeron();
 	public static final Carte COFFRE = new CoffreDuForgeron();
 	public static final CarteRenfort SABOTS = new SabotsArgent();
 	public static final Carte SATYRES = new Carte("Les Satyres", 3, 0, 6);

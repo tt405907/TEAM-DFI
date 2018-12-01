@@ -81,4 +81,9 @@ public class BotRandom extends Joueur {
 		return utilisables.get(rand.nextInt(utilisables.size()));
 	}
 
+	@Override
+	public int changeOrEnMarteau(int orChangeable) {
+		return rand.nextInt(orChangeable+1);
+	}
+
 }

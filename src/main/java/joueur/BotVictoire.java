@@ -162,4 +162,11 @@ public class BotVictoire extends Joueur {
 		return disponibles.contains(tente) && tente.peutActiver(this);
 	}
 
+	@Override
+	public int changeOrEnMarteau(int orChangeable) {
+		int i=this.getOr()+orChangeable-9;
+		return i>0 ? i : 0;
+	}
+
+
 }

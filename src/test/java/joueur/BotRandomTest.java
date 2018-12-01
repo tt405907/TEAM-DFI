@@ -135,7 +135,7 @@ class BotRandomTest {
         List<Carte> listeCarte = Arrays.asList();
         assertEquals(joueur.faireAchatCartes(listeCarte),null);
 
-        // Testons qu'ils nous renvoit bien une des cartes aléatoires de la liste
+        // Testons qu'il nous renvoit bien une des cartes aléatoires de la liste
         listeCarte = Arrays.asList(carte1,carte2,carte3);
         boolean test = false;
         Carte carteDonne = joueur.faireAchatCartes(listeCarte);
