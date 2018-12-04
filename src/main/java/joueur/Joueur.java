@@ -117,6 +117,7 @@ public abstract class Joueur {
 		de2.setPartie(partie);
 
 		renforts = new ArrayList<>();
+		marteaux= new ArrayList<>();
 	}
 
 	public void addRenfort(CarteRenfort carte) {
