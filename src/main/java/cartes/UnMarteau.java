@@ -27,6 +27,8 @@ public class UnMarteau {
 		// cas où on dépasse ou atteint les 30 et finit le marteau,
 		// on supprime alors ce dernier
 		if (jeton + orAPlacer >= 30) {
+			if (jeton < 15 )
+				joueur.addVictoire(10);
 			joueur.addVictoire(15);
 			joueur.delMarteau(this);
 
