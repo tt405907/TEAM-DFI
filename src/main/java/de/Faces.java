@@ -46,4 +46,5 @@ public final class Faces {
 	
 	//Faces spéciales
 	public static final Face X3 = new FaceX3();
+	public static final Face MIROIR = new FaceMiroir();
 }

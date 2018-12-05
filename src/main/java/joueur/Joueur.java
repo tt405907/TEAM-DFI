@@ -29,6 +29,10 @@ public abstract class Joueur {
 		de1.setPartie(partie);
 		de2.setPartie(partie);
 	}
+	
+	public Partie getPartie() {
+		return partie;
+	}
 
 	// Fonctions de bot
 	/**
@@ -201,18 +205,21 @@ public abstract class Joueur {
 		de1.lancer();
 		de2.lancer();
 		
+		Face face1 = de1.getLastFace().getProxiedFace(this);
+		Face face2 = de2.getLastFace().getProxiedFace(this);
+		
 		//Appliquer le x3 n'a aucun effet donc pas la peine de regarder lequel est le bon
-		if (de1.getLastFace() == Faces.X3 || de2.getLastFace() == Faces.X3) {
-			de1.getLastFace().appliquerX3(this);
-			de2.getLastFace().appliquerX3(this);
+		if (face1 == Faces.X3 || face2 == Faces.X3) {
+			face1.appliquerX3(this);
+			face2.appliquerX3(this);
 		}
 		else {
-			de1.getLastFace().appliquer(this);
-			de2.getLastFace().appliquer(this);
+			face1.appliquer(this);
+			face2.appliquer(this);
 		}
 		
 		if (partie != null)
-			partie.printRoll(this, de1.getLastFace(), de2.getLastFace());
+			partie.printRoll(this, de1.getLastFace(), de2.getLastFace(), face1, face2);
 	}
 
 	// Effectue un lancé du dé choisi par le joueur dans choixFaveurMineure n fois

@@ -92,6 +92,19 @@ public class Partie {
 			}
 		}
 	}
+	
+	public Joueur[] getEnnemis(Joueur joueur) {
+		Joueur[] ennemis = new Joueur[joueurs.length-1];
+		int index = 0;
+		for (Joueur j : joueurs) {
+			if (j != joueur) {
+				ennemis[index] = j;
+				index++;
+			}
+		}
+		
+		return ennemis;
+	}
 
 	/**
 	 * commence la partie et renvoie les gagnants
@@ -156,10 +169,13 @@ public class Partie {
 	}
 
 	// Un joueur a lancé ces dés
-	public void printRoll(Joueur joueur, Face face1, Face face2) {
+	public void printRoll(Joueur joueur, Face face1, Face face2, Face replacement1, Face replacement2) {
 		if (!printing)
 			return;
-		System.out.println(joueur + ": " + face1 + " et " + face2);
+		//Si un miroir a copié une face, affiche quelle face a été copiée
+		String strFace1 = face1 == replacement1 ? face1.toString() : face1 + " (" + replacement1 + ")";
+		String strFace2 = face2 == replacement2 ? face2.toString() : face2 + " (" + replacement2 + ")";
+		System.out.println(joueur + ": " + strFace1 + " et " + strFace2);
 	}
 
 	// Un joueur a lancé un dé
