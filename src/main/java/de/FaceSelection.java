@@ -19,6 +19,10 @@ public class FaceSelection extends Face {
     {
         allFace[J.choixFace(allFace)].appliquer(J);
     }
+    
+    public void appliquerX3(Joueur j) {
+        allFace[j.choixFace(allFace)].appliquerX3(j);
+    }
 
 	@Override
 	public String toString() {

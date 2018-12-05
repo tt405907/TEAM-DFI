@@ -43,4 +43,7 @@ public final class Faces {
 	public static final Face LUNE_2_VICTOIRE_2 = new FaceMultiple(12, LUNE_2, VICTOIRE_2);
 	public static final Face OR_2_OU_LUNE_2_OU_SOLEIL_2 = new FaceSelection(12, OR_2, LUNE_2, SOLEIL_2);
 	public static final Face OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1 = new FaceMultiple(12, OR_1, LUNE_1, SOLEIL_1, VICTOIRE_1);
+	
+	//Faces spéciales
+	public static final Face X3 = new FaceX3();
 }

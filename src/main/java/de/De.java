@@ -64,9 +64,12 @@ public class De
      */
     public void appliquerDe(Joueur j)
     {
-        int temp = rand.nextInt(6);
-        this.getFace(temp).appliquer(j);
-        lastIndex = temp;
+    	lancer();
+    	getLastFace().appliquer(j);
+    }
+    
+    public void lancer() {
+    	lastIndex = rand.nextInt(6);
     }
     
     /**

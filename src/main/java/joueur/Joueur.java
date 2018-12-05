@@ -8,6 +8,7 @@ import cartes.CarteRenfort;
 import cartes.UnMarteau;
 import de.De;
 import de.Face;
+import de.Faces;
 import partie.Partie;
 import sanctuaire.ListeAchat;
 
@@ -197,8 +198,19 @@ public abstract class Joueur {
 	 * Cela nous permet de lancer et d'appliquer la face en question
 	 */
 	public void appliquerDe() {
-		de1.appliquerDe(this);
-		de2.appliquerDe(this);
+		de1.lancer();
+		de2.lancer();
+		
+		//Appliquer le x3 n'a aucun effet donc pas la peine de regarder lequel est le bon
+		if (de1.getLastFace() == Faces.X3 || de2.getLastFace() == Faces.X3) {
+			de1.getLastFace().appliquerX3(this);
+			de2.getLastFace().appliquerX3(this);
+		}
+		else {
+			de1.getLastFace().appliquer(this);
+			de2.getLastFace().appliquer(this);
+		}
+		
 		if (partie != null)
 			partie.printRoll(this, de1.getLastFace(), de2.getLastFace());
 	}

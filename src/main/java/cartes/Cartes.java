@@ -9,7 +9,7 @@ public class Cartes {
 	public static final CarteRenfort SABOTS = new SabotsArgent();
 	public static final Carte SATYRES = new Carte("Les Satyres", 3, 0, 6);
 	public static final Carte PASSEUR = new Carte("Le Passeur", 4, 0, 12);
-	public static final Carte CASQUE = new Carte("Le Casque d'Invisibilité", 5, 0, 4);
+	public static final Carte CASQUE = new CasqueInvisibilite();
 	public static final Carte PINCE = new Pince();
 	public static final Carte HYDRE = new Carte("L'Hydre", 5, 5, 26);
 	public static final Carte ENIGME = new Enigme();
