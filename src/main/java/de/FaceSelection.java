@@ -35,5 +35,16 @@ public class FaceSelection extends Face {
 		
 		return sb.toString();
 	}
+	
+	@Override
+	public void appliquerNegatif(Joueur J)
+    {
+        allFace[J.choixFaceNegatif(allFace)].appliquerNegatif(J);
+    }
+    
+	@Override
+    public void appliquerNegatifX3(Joueur j) {
+        allFace[j.choixFaceNegatif(allFace)].appliquerNegatifX3(j);
+    }
 
 }

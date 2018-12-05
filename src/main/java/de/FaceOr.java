@@ -19,4 +19,9 @@ public class FaceOr extends Face{
 		return nombreOr + " Or";
 	}
 
+	@Override
+	public void appliquerNegatif(Joueur j) {
+		j.addOr(-nombreOr);
+	}
+	
 }

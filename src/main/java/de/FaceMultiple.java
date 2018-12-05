@@ -34,4 +34,12 @@ public class FaceMultiple extends Face {
 		return sb.toString();
 	}
 
+    public void appliquerNegatif(Joueur J)
+    {
+        for(Face face: allFace)
+        {
+            face.appliquerNegatif(J);
+        }
+    }
+
 }

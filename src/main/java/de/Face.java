@@ -12,6 +12,15 @@ public abstract class Face {
 		appliquer(j);
 	}
 	
+	public abstract void appliquerNegatif(Joueur j);
+	
+	public void appliquerNegatifX3(Joueur j) {
+		//Implémentation par défaut
+		appliquerNegatif(j);
+		appliquerNegatif(j);
+		appliquerNegatif(j);
+	}
+	
 	/**
 	 * Si cette face va être "remplacée" par une autre via son effet (Miroir Abyssal), elle retourne cette face.
 	 * Permet de détecter les x3 copiés par le Miroir.

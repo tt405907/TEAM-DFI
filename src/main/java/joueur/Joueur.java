@@ -43,6 +43,15 @@ public abstract class Joueur {
 	 * @return l'indice de la face à appliquer dans le tableau
 	 */
 	public abstract int choixFace(Face... faces);
+	
+	/**
+	 * Propose plusieurs faces au bot pour qu'il donne l'indice de la face qu'il
+	 * souhaite appliquer négativement (minotaure) dans le tableau.
+	 * 
+	 * @param faces les faces que le bot peut appliquer
+	 * @return l'indice de la face à appliquer dans le tableau
+	 */
+	public abstract int choixFaceNegatif(Face... faces);
 
 	/**
 	 * Demande au bot de forger la face donnée sur un de ces dés.
@@ -216,6 +225,27 @@ public abstract class Joueur {
 		else {
 			face1.appliquer(this);
 			face2.appliquer(this);
+		}
+		
+		if (partie != null)
+			partie.printRoll(this, de1.getLastFace(), de2.getLastFace(), face1, face2);
+	}
+	
+	public void appliquerDeNegatif() {
+		de1.lancer();
+		de2.lancer();
+		
+		Face face1 = de1.getLastFace().getProxiedFace(this);
+		Face face2 = de2.getLastFace().getProxiedFace(this);
+		
+		//Appliquer le x3 n'a aucun effet donc pas la peine de regarder lequel est le bon
+		if (face1 == Faces.X3 || face2 == Faces.X3) {
+			face1.appliquerNegatifX3(this);
+			face2.appliquerNegatifX3(this);
+		}
+		else {
+			face1.appliquerNegatif(this);
+			face2.appliquerNegatif(this);
 		}
 		
 		if (partie != null)

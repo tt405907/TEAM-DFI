@@ -82,6 +82,23 @@ public class BotVictoire extends Joueur {
 		
 		return choix;
 	}
+	
+	public int choixFaceNegatif(Face... faces) {
+		//Choisit la face qui rapporte le plus de points de victoire
+		int choix = 0;
+		int min = Integer.MAX_VALUE;
+		
+		for (int i = 0; i < faces.length; i++)
+		{
+			if (valeurVictoire(faces[i]) < min)
+			{
+				choix = i;
+				min = valeurVictoire(faces[i]);
+			}
+		}
+		
+		return choix;
+	}
 
 	@Override
 	public void forge(Face face) {

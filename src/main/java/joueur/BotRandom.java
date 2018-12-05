@@ -25,6 +25,10 @@ public class BotRandom extends Joueur {
 	public int choixFace(Face...faces) {
 		return rand.nextInt(faces.length);
 	}
+	
+	public int choixFaceNegatif(Face...faces) {
+		return rand.nextInt(faces.length);
+	}
 
 	@Override
 	public void forge(Face face) {

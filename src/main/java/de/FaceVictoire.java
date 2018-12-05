@@ -18,4 +18,9 @@ public class FaceVictoire extends Face{
 	public String toString() {
 		return nombreVictoire + " Victoire";
 	}
+	
+	public void appliquerNegatif(Joueur j) {
+		j.addVictoire(-nombreVictoire);
+	}
+	
 }

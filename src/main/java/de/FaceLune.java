@@ -19,4 +19,9 @@ public class FaceLune extends Face{
 		return nombreLune + " Lune";
 	}
 
+	@Override
+	public void appliquerNegatif(Joueur j) {
+		j.addLune(-nombreLune);
+	}
+
 }

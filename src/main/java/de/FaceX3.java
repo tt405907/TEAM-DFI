@@ -14,5 +14,8 @@ public class FaceX3 extends Face{
 	public String toString() {
 		return "x3";
 	}
+	
+	public void appliquerNegatif(Joueur J) {
+	}
 
 }

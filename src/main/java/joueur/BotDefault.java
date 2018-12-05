@@ -21,6 +21,10 @@ public class BotDefault extends Joueur {
 	public int choixFace(Face... faces) {
 		return 0;
 	}
+	
+	public int choixFaceNegatif(Face... faces) {
+		return 0;
+	}
 
 	@Override
 	public void forge(Face face) {

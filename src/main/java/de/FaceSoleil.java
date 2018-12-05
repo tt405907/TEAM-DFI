@@ -19,4 +19,9 @@ public class FaceSoleil extends Face{
 		return nombreSoleil + " Soleil";
 	}
 
+	@Override
+	public void appliquerNegatif(Joueur j) {
+		j.addSoleil(-nombreSoleil);
+	}
+	
 }

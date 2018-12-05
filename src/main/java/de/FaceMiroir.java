@@ -47,4 +47,16 @@ public class FaceMiroir extends Face{
 		return "Miroir";
 	}
 
+	@Override
+	public void appliquerNegatif(Joueur j) {
+		Face[] faces = getFacesEnnemis(j);
+		if (faces.length > 0) faces[j.choixFaceNegatif(faces)].appliquerNegatif(j);
+	}
+	
+	@Override
+	public void appliquerNegatifX3(Joueur j) {
+		Face[] faces = getFacesEnnemis(j);
+		if (faces.length > 0) faces[j.choixFaceNegatif(faces)].appliquerNegatifX3(j);
+	}
+	
 }
