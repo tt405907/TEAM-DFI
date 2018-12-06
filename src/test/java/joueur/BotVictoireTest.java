@@ -164,6 +164,14 @@ public class BotVictoireTest {
 		assertEquals(3,joueur.changeOrEnMarteau(3));
 
 	}
+	@Test
+	void choixFaceNegatif()
+	{
+		// il va donc choisir la face avec le moins le moins de points de victoire
+		int indice = joueur.choixFaceNegatif(face4,face2,face3,face1,face5);
+		// il devrait donc nous revoyer arbitrairement la face2 qui a 0 point de victoires
+		assertEquals(0,indice);
+	}
 
 
 
