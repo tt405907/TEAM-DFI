@@ -7,7 +7,7 @@ public class Cartes {
 	public static final Carte MARTEAU = new MarteauDuForgeron();
 	public static final Carte COFFRE = new CoffreDuForgeron();
 	public static final CarteRenfort SABOTS = new SabotsArgent();
-	public static final Carte SATYRES = new Carte("Les Satyres", 3, 0, 6);
+	public static final Carte SATYRES = new Satyres();
 	public static final Carte PASSEUR = new Carte("Le Passeur", 4, 0, 12);
 	public static final Carte CASQUE = new CasqueInvisibilite();
 	public static final Carte PINCE = new Pince();
