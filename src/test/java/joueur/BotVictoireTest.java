@@ -26,8 +26,6 @@ public class BotVictoireTest {
     private Sanctuaire sanctuaire;
     private De de1;
 	private De de2;
-	private UnMarteau marteau;
-	
 	/**
 	  * On initialise chacun de nos tests avec cette methode
 	  */
