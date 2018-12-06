@@ -179,8 +179,9 @@ public class BotVictoire extends Joueur {
 		return disponibles.contains(tente) && tente.peutActiver(this);
 	}
 
+	// Méthode sera refaite pour les prochains bot basé sur des statistiques
 	@Override
-	public int changeOrEnMarteau(int orChangeable) {
+	public int changeOrEnMarteau(int orChangeable) { // Si il a + de 9 or il met aussi non il l'a met
 		int i=this.getOr()+orChangeable-9;
 		return i>0 ? i : 0;
 	}

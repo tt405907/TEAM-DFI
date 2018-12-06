@@ -1,6 +1,7 @@
 package joueur;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cartes.UnMarteau;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +24,7 @@ public class BotVictoireTest {
     private Sanctuaire sanctuaire;
     private De de1;
 	private De de2;
+	private UnMarteau marteau;
 	
 	/**
 	  * On initialise chacun de nos tests avec cette methode
@@ -139,21 +141,30 @@ public class BotVictoireTest {
 	}
 
 	@Test
-	void faireAchatCartes()
-	{
+	void faireAchatCartes() {
 		// Nous allons vérifier que la méthode renvoie null si le joueur ne peut acheter aucune cartes
-		Carte carte1 = new Carte("Jadore",3,3,5);
-		Carte carte2 = new Carte("Géant",5,0,10);
-		Carte carte3 = new Carte("Face",5,2,8);
-		Plateau plateau = new Plateau(carte1,carte2,carte3);
-		assertEquals(joueur.faireAchatCartes(plateau.getCartesAchetables(joueur)),null);
+		Carte carte1 = new Carte("Jadore", 3, 3, 5);
+		Carte carte2 = new Carte("Géant", 5, 0, 10);
+		Carte carte3 = new Carte("Face", 5, 2, 8);
+		Plateau plateau = new Plateau(carte1, carte2, carte3);
+		assertEquals(joueur.faireAchatCartes(plateau.getCartesAchetables(joueur)), null);
 		// Vérifions qu'il va bien me donner la carte qui me donne le plus de points de victoires
 		joueur.addLune(5);
-		assertEquals(joueur.faireAchatCartes(plateau.getCartesAchetables(joueur)),carte2);
-
-
-
+		assertEquals(joueur.faireAchatCartes(plateau.getCartesAchetables(joueur)), carte2);
+	}
+	@Test
+	void changeOrEnMarteau()
+	{
+		// On vérifie que le bot à 0 or
+		assertEquals(0,joueur.getOr());
+		// Dans se cas là le bot devai ne pas le mettre dans son marteau il va retourner 0
+		assertEquals(0,joueur.changeOrEnMarteau(3));
+		// On va mettre notre joueur avec 9 Or et donc la valeur qu'on va mettre dans changeOrEnMarteau devrait etre retourné sur notre prochain test
+		joueur.addOr(9);
+		assertEquals(3,joueur.changeOrEnMarteau(3));
 
 	}
+
+
 
 }
