@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import joueur.BotDefault;
 import joueur.Joueur;
 
-class FaceSelectionTest {
+public class FaceSelectionTest {
 
 	@Test
 	void testSelectionFace() {

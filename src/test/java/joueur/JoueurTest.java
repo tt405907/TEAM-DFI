@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Class testant toutes les methodes de notre class Joueur
  */
-class JoueurTest {
+public class JoueurTest {
 
     private Joueur joueur;
 

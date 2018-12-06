@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import de.*;
 import joueur.*;
 
-class ListeAchatTest {
+public class ListeAchatTest {
     private Sanctuaire sanctuaire;
     private Joueur joueur;
     private Face face1;

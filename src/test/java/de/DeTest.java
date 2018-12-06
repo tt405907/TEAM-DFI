@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import joueur.BotDefault;
 import joueur.Joueur;
 
-class DeTest {
+public class DeTest {
     private Joueur joueur;
 
     @BeforeEach

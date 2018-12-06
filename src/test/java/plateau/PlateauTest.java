@@ -14,7 +14,7 @@ import cartes.Carte;
 import joueur.BotDefault;
 import joueur.Joueur;
 
-class PlateauTest {
+public class PlateauTest {
 
 	private Joueur joueur;
 

@@ -15,7 +15,7 @@ import de.Faces;
 import sanctuaire.ListeAchat;
 import sanctuaire.Sanctuaire;
 
-class BotRandomTest {
+public class BotRandomTest {
     private Joueur joueur;
     private ListeAchat listeAchat;
     private Face face1;

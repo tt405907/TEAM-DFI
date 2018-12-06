@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import joueur.BotDefault;
 import joueur.Joueur;
 
-class MarteauTest {
+public class MarteauTest {
 	private Joueur joueur;
 	UnMarteau marteau;
 	UnMarteau marteau2;

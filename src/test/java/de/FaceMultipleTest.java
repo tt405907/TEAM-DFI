@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import joueur.BotDefault;
 import joueur.Joueur;
 
-class FaceMultipleTest {
+public class FaceMultipleTest {
 	private Joueur joueur;
 	
 	@BeforeEach

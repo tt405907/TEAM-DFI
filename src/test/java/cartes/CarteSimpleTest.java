@@ -11,7 +11,7 @@ import de.FaceOr;
 import joueur.BotDefault;
 import joueur.Joueur;
 
-class CarteSimpleTest {
+public class CarteSimpleTest {
 
 	private Joueur joueur;
     

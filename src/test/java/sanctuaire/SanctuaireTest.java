@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import de.*;
 import joueur.*;
 
-class SanctuaireTest {
+public class SanctuaireTest {
 
     private Sanctuaire sanctuaire;
     private Joueur joueur;
