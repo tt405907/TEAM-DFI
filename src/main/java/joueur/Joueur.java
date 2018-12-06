@@ -202,7 +202,7 @@ public abstract class Joueur {
 
 	public void addVictoire(int victoire) {
 		// int old = this.victoire;
-		this.victoire += victoire;
+		this.victoire = Math.max(this.victoire + victoire, 0);
 		// if (old != this.victoire) System.out.println(this + ": Victoire " + old + "
 		// -> " + this.victoire);
 	}
