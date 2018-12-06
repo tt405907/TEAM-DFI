@@ -172,6 +172,17 @@ public class BotVictoireTest {
 		// il devrait donc nous revoyer arbitrairement la face2 qui a 0 point de victoires
 		assertEquals(0,indice);
 	}
+	@Test
+	void choixFaveurMineure()
+	{
+		for(int indice = 0 ; indice < 5; indice++)
+		{
+			de1.forge(face2,indice);
+			de2.forge(face3,indice);
+		}
+		// Le Dé 1 va donc avoir plus de valeur en points de victoire que le Dé 2 donc il devrait nous renvoyer le de1
+		assertEquals(de2,joueur.choixFaveurMineure());
+	}
 
 
 
