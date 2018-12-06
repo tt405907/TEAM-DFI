@@ -1,17 +1,19 @@
 package joueur;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cartes.UnMarteau;
+import cartes.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import cartes.Carte;
 import de.De;
 import de.Face;
 import de.Faces;
 import plateau.Plateau;
 import sanctuaire.ListeAchat;
 import sanctuaire.Sanctuaire;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BotVictoireTest {
 	private Joueur joueur;
@@ -183,6 +185,23 @@ public class BotVictoireTest {
 		// Le Dé 1 va donc avoir plus de valeur en points de victoire que le Dé 2 donc il devrait nous renvoyer le de1
 		assertEquals(de2,joueur.choixFaveurMineure());
 	}
+
+	@Test
+	void choixRenfort()
+	{
+		CarteRenfort carteSabots = Cartes.SABOTS;
+		CarteRenfort carteAile = Cartes.AILES;
+		CarteRenfort carteAncien = Cartes.ANCIEN;
+		List<CarteRenfort> aymeriqueLaMachineATuer = new ArrayList<CarteRenfort>();
+		aymeriqueLaMachineATuer.add(carteAile);
+		aymeriqueLaMachineATuer.add(carteSabots);
+		aymeriqueLaMachineATuer.add(carteAncien);
+		// Notre bot va donc choisir dans l'ordre de priorité SABOTS AILES ANCIEN
+		// Dons dans cette list il devrait donc nous retourner SABOTS
+		assertEquals(Cartes.SABOTS,joueur.choixRenfort(aymeriqueLaMachineATuer));
+		// Si la liste est vide il devra donc nous return null
+		assertEquals(null,joueur.choixRenfort(new ArrayList<>()));
+}
 
 
 
