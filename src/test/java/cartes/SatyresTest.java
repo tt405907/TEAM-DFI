@@ -1,23 +1,19 @@
 package cartes;
 
-import de.FaceLune;
-import de.FaceOr;
-import de.FaceSoleil;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import de.FaceVictoire;
 import joueur.BotDefault;
 import joueur.Joueur;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import partie.Partie;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class SatyresTest {
     private Joueur joueur1;
     private Joueur joueur2;
     private Joueur joueur3;
-    private Partie partie;
     private Carte carte;
 
     @BeforeEach
@@ -26,7 +22,7 @@ public class SatyresTest {
         joueur2 = new BotDefault("LoveChristmas");
         joueur3 = new BotDefault("SexyMotherChristmas");
         carte = new Satyres();
-        partie = new Partie(joueur1, joueur2,joueur3);
+        new Partie(joueur1, joueur2,joueur3);
         for (int indice = 0; indice < 6; indice++) {
             joueur2.getDe1().forge(new FaceVictoire(1,0),indice);
             joueur2.getDe2().forge(new FaceVictoire(1,0),indice);
