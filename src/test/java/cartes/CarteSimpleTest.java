@@ -33,6 +33,7 @@ class CarteSimpleTest {
       //les points de victoire sont déja testé dans carteTest
 	}
 
+	@Test
 	void testCoffreDuforgeron() {
 		CoffreDuForgeron coffreduforgeron = new CoffreDuForgeron();
 		assertEquals(12,joueur.getOrMax());
@@ -44,7 +45,8 @@ class CarteSimpleTest {
         assertEquals(9,joueur.getSoleilMax());
         
 	}
-	
+
+	@Test
 	void testPince() {
 		De de1 = joueur.getDe1();
 		De de2 = joueur.getDe2();
@@ -61,6 +63,7 @@ class CarteSimpleTest {
         //on sait que le de1 c'est toujours 1or et le de2 c'est toujours 1lune comme on lance les 2 des 2 fois on a 2 de chaques
 	}
 	
+	@Test
 	void testEnigme() {
 		De de1 = joueur.getDe1();
 		for (int i = 0; i < 6; i++) {
