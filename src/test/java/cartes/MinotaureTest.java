@@ -1,7 +1,6 @@
 package cartes;
 
 import de.*;
-import joueur.BotDefault;
 import joueur.Joueur;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +14,8 @@ public class MinotaureTest {
 
     @BeforeEach
     void setUp() {
-        joueur1 = new BotDefault("MerryChristmas");
-        joueur2 = new BotDefault("LoveChristmas");
+        joueur1 = new Joueur("MerryChristmas");
+        joueur2 = new Joueur("LoveChristmas");
         carte = new Minotaure();
         new Partie(joueur1,joueur2);
         for(int indice = 0; indice < 6 ; indice++)

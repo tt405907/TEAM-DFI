@@ -9,14 +9,10 @@ import de.Face;
 import sanctuaire.ListeAchat;
 
 /**
- * Implémentation de Joueur avec des méthodes par défaut pour les tests qui
+ * Implémentation de Bot avec des méthodes par défaut pour les tests qui
  * n'ont pas besoin de ces méthodes.
  */
-public class BotDefault extends Joueur {
-	public BotDefault(String nom) {
-		super(nom);
-	}
-
+public class BotDefault extends Bot {
 	@Override
 	public int choixFace(Face... faces) {
 		return 0;
@@ -28,7 +24,7 @@ public class BotDefault extends Joueur {
 
 	@Override
 	public void forge(Face face) {
-		de1.forge(face, 0);
+		getJoueur().getDe1().forge(face, 0);
 	}
 
 	@Override
@@ -53,7 +49,7 @@ public class BotDefault extends Joueur {
 
 	@Override
 	public De choixFaveurMineure() {
-		return de1;
+		return getJoueur().getDe1();
 	}
 
 	@Override

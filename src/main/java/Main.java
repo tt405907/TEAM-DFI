@@ -12,10 +12,10 @@ public class Main {
 		Joueur[] joueurs = new Joueur[4];
 		
 		//2 bots aléatoires et 2 bots victoire
-		joueurs[0] = new BotRandom("Random 1");
-		joueurs[1] = new BotVictoire("Victoire 2");
-		joueurs[2] = new BotRandom("Random 3");
-		joueurs[3] = new BotVictoire("Victoire 4");
+		joueurs[0] = new Joueur("Random 1").setBot(new BotRandom());
+		joueurs[1] = new Joueur("Victoire 2").setBot(new BotVictoire());
+		joueurs[2] = new Joueur("Random 3").setBot(new BotRandom());
+		joueurs[3] = new Joueur("Victoire 4").setBot(new BotVictoire());
 		
 		Partie p = new Partie(joueurs);
 		p.setPrinting(true);

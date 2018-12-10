@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import joueur.BotDefault;
 import joueur.Joueur;
 
 public class MarteauTest {
@@ -16,7 +15,7 @@ public class MarteauTest {
 	@BeforeEach
     void setBefore()
     {
-        joueur = new BotDefault("joeur");
+        joueur = new Joueur("joeur");
         marteau = new UnMarteau(joueur);
         marteau2 = new UnMarteau(joueur);
     }

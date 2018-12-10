@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import joueur.BotDefault;
 import joueur.Joueur;
 
 public class DeTest {
@@ -15,7 +14,7 @@ public class DeTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new BotDefault("joeur");
+        joueur = new Joueur("joeur");
     }
 
     /**

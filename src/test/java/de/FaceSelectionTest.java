@@ -12,17 +12,17 @@ public class FaceSelectionTest {
 	@Test
 	void testSelectionFace() {
 		Face face = new FaceSelection(2,new FaceOr(4,0),new FaceLune(2,0));
-		Joueur bot0 = new BotDefault("joeur") {
+		Joueur bot0 = new Joueur("bot0").setBot(new BotDefault() {
 			public int choixFace(Face... faces) {
 				return 0;
 			}
-		};
+		});
 		
-		Joueur bot1 = new BotDefault("joeur") {
+		Joueur bot1 = new Joueur("bot1").setBot(new BotDefault() {
 			public int choixFace(Face... faces) {
 				return 1;
 			}
-		};
+		});
 		
 		assertEquals(0, bot0.getOr());
 		assertEquals(0, bot0.getLune());

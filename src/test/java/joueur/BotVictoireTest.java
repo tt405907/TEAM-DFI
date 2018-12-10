@@ -32,7 +32,7 @@ public class BotVictoireTest {
 	@BeforeEach
 	void setBefore()
 	{
-		joueur = new BotVictoire("joeur");
+		joueur = new Joueur("joeur").setBot(new BotVictoire());
 		face1 = Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1;
         face2 = Faces.LUNE_2_VICTOIRE_2;
         face3 = Faces.VICTOIRE_3;

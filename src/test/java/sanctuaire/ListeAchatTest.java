@@ -22,7 +22,7 @@ public class ListeAchatTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new BotDefault("joeur");
+        joueur = new Joueur("joeur");
         face1 = new FaceOr(3,2);
         face2 = new FaceLune(2,5);
         face3 = new FaceSoleil(3,8);
@@ -55,7 +55,7 @@ public class ListeAchatTest {
     @Test
     void acheter()
     {
-        Joueur joueur2 = new BotDefault("joeur2"); // un joueur "sonde" pour tester les sanctuaires
+        Joueur joueur2 = new Joueur("joeur2"); // un joueur "sonde" pour tester les sanctuaires
         //cas où l'acheteur veut acheter une face trop chère pour lui
 
         joueur.addOr(9);

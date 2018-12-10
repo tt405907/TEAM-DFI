@@ -30,7 +30,7 @@ public class BotRandomTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new BotRandom("Biloute");
+        joueur = new Joueur("Biloute").setBot(new BotRandom());
         face1 = Faces.LUNE_2;
         face2 = Faces.LUNE_2_VICTOIRE_2;
         face3 = Faces.VICTOIRE_3;

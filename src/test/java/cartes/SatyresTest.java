@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import de.FaceVictoire;
-import joueur.BotDefault;
 import joueur.Joueur;
 import partie.Partie;
 
@@ -18,9 +17,9 @@ public class SatyresTest {
 
     @BeforeEach
     void setUp() {
-        joueur1 = new BotDefault("MerryChristmas");
-        joueur2 = new BotDefault("LoveChristmas");
-        joueur3 = new BotDefault("SexyMotherChristmas");
+        joueur1 = new Joueur("MerryChristmas");
+        joueur2 = new Joueur("LoveChristmas");
+        joueur3 = new Joueur("SexyMotherChristmas");
         carte = new Satyres();
         new Partie(joueur1, joueur2,joueur3);
         for (int indice = 0; indice < 6; indice++) {

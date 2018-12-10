@@ -14,12 +14,7 @@ import sanctuaire.ListeAchat;
 /**
  * Un bot très simple qui cherche à maximiser les points de victoire sur ses dés.
  */
-public class BotVictoire extends Joueur {
-
-	public BotVictoire(String nom) {
-		super(nom);
-	}
-	
+public class BotVictoire extends Bot {	
 	/**
 	 * Donne combien de points de victoire le bot s'attends à recevoir d'une face.
 	 */
@@ -103,7 +98,7 @@ public class BotVictoire extends Joueur {
 	@Override
 	public void forge(Face face) {
 		//Prends le dé rapportant le moins de point de victoire
-		De cible = valeurVictoire(de1) < valeurVictoire(de2) ? de1 : de2;
+		De cible = valeurVictoire(getJoueur().getDe1()) < valeurVictoire(getJoueur().getDe2()) ? getJoueur().getDe1() : getJoueur().getDe2();
 		//Trouve la face rapportant le moins
 		int index = getMinFace(cible);
 		cible.forge(face, index);
@@ -114,7 +109,7 @@ public class BotVictoire extends Joueur {
 		while (!liste.isEmpty())
 		{
 			//Prends le dé rapportant le moins de point de victoire
-			De cible = valeurVictoire(de1) < valeurVictoire(de2) ? de1 : de2;
+			De cible = valeurVictoire(getJoueur().getDe1()) < valeurVictoire(getJoueur().getDe2()) ? getJoueur().getDe1() : getJoueur().getDe2();
 			//Trouve la valeur de la face rapportant le moins, qui sera remplacée si possible
 			int value = valeurVictoire(cible.getFace(getMinFace(cible)));
 			
@@ -135,9 +130,9 @@ public class BotVictoire extends Joueur {
 	@Override
 	public boolean tourSanctuaire() {
 		//Les cartes qui valent beaucoup de point de victoire coutent plus de 3
-		if(getLune() >= 3 || getSoleil() >= 3) return false;
+		if(getJoueur().getLune() >= 3 || getJoueur().getSoleil() >= 3) return false;
 		//Les faces qui rapportent de la victoire coûtent 5 ou plus
-		else if(getOr() >= 5) return true;
+		else if(getJoueur().getOr() >= 5) return true;
 		//Sinon prends une carte à bas prix
 		else return false;
 	}
@@ -145,7 +140,7 @@ public class BotVictoire extends Joueur {
 	@Override
 	public boolean faireTourSupplementaire() {
 		// Oui si il peut prendre une carte ou une face de valeur
-		return (getLune() >= 3 || getSoleil() >= 5 || (getOr() >= 5));
+		return (getJoueur().getLune() >= 3 || getJoueur().getSoleil() >= 5 || getJoueur().getOr() >= 5);
 	}
 
 	@Override
@@ -163,7 +158,7 @@ public class BotVictoire extends Joueur {
 
 	@Override
 	public De choixFaveurMineure() {
-		return valeurVictoire(de1) > valeurVictoire(de2) ? de1 : de2;
+		return valeurVictoire(getJoueur().getDe1()) > valeurVictoire(getJoueur().getDe2()) ? getJoueur().getDe1() : getJoueur().getDe2();
 	}
 
 	@Override
@@ -176,13 +171,13 @@ public class BotVictoire extends Joueur {
 	}
 	
 	private boolean peutUtiliser(List<CarteRenfort> disponibles, CarteRenfort tente) {
-		return disponibles.contains(tente) && tente.peutActiver(this);
+		return disponibles.contains(tente) && tente.peutActiver(getJoueur());
 	}
 
 	// Méthode sera refaite pour les prochains bot basé sur des statistiques
 	@Override
 	public int changeOrEnMarteau(int orChangeable) { // Si il a + de 9 or il met aussi non il l'a met
-		int i=this.getOr()+orChangeable-9;
+		int i=getJoueur().getOr()+orChangeable-9;
 		return i>0 ? i : 0;
 	}
 

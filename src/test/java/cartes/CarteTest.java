@@ -1,6 +1,5 @@
 package cartes;
 
-import joueur.BotDefault;
 import joueur.Joueur;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ public class CarteTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new BotDefault("joeur");
+        joueur = new Joueur("joeur");
         carte = new Carte("Biloute",5,5,10);
     }
 

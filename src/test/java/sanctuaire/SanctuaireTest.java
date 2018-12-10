@@ -22,7 +22,7 @@ public class SanctuaireTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new BotDefault("joeur");
+        joueur = new Joueur("joeur");
         face1 = new FaceOr(3,2);
         face2 = new FaceLune(2,5);
         face3 = new FaceSoleil(3,8);

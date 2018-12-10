@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import de.De;
 import de.FaceLune;
 import de.Faces;
-import joueur.BotDefault;
 import joueur.Joueur;
 
 class CasqueInvisibiliteTest {
@@ -17,7 +16,7 @@ class CasqueInvisibiliteTest {
 
 	@BeforeEach
 	void setBefore() {
-		joueur = new BotDefault("joeur");
+		joueur = new Joueur("joeur");
 		casque = new CasqueInvisibilite();
 	}
 

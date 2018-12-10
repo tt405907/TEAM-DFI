@@ -13,11 +13,11 @@ import sanctuaire.ListeAchat;
 /**
  * Un bot qui prends ses décisions au hasard.
  */
-public class BotRandom extends Joueur {
+public class BotRandom extends Bot {
 	private Random rand;
-
-	public BotRandom(String nom) {
-		super(nom);
+	
+	@Override
+	public void reset() {
 		rand = new Random();
 	}
 
@@ -34,11 +34,11 @@ public class BotRandom extends Joueur {
 	public void forge(Face face) {
 		if (rand.nextBoolean())
 		{
-			de1.forge(face, rand.nextInt(6));
+			getJoueur().getDe1().forge(face, rand.nextInt(6));
 		}
 		else
 		{
-			de2.forge(face, rand.nextInt(6));
+			getJoueur().getDe2().forge(face, rand.nextInt(6));
 		}
 	}
 
@@ -71,14 +71,14 @@ public class BotRandom extends Joueur {
 
 	@Override
 	public De choixFaveurMineure() {
-		return rand.nextBoolean() ? de1 : de2;
+		return rand.nextBoolean() ? getJoueur().getDe1() : getJoueur().getDe2();
 	}
 
 	@Override
 	public CarteRenfort choixRenfort(List<CarteRenfort> liste) {
 		// ne regarde que les cartes utilisables
 		List<CarteRenfort> utilisables = liste.stream()
-				.filter(c -> c.peutActiver(this))
+				.filter(c -> c.peutActiver(getJoueur()))
 				.collect(Collectors.toList());
 		
 		if (utilisables.isEmpty()) return null;

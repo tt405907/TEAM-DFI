@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import de.*;
-import joueur.BotDefault;
 import joueur.Joueur;
 import partie.Partie;
 
@@ -19,8 +18,8 @@ class MiroirAbyssalTest {
 	// sans faces en commun, ainsi que une carte miroir abyssal et une face miroir.
 	@BeforeEach
 	void setBefore() {
-		j1 = new BotDefault("joueurVictoire");
-		j2 = new BotDefault("joueurLune");
+		j1 = new Joueur("joueurVictoire");
+		j2 = new Joueur("joueurLune");
 		miroir = new MiroirAbyssal();
 		faceMiroir = new FaceMiroir();
 		De de1 = j1.getDe1();

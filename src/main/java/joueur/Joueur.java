@@ -12,7 +12,7 @@ import de.Faces;
 import partie.Partie;
 import sanctuaire.ListeAchat;
 
-public abstract class Joueur {
+public class Joueur {
 	private int or, orMax;
 	private int soleil, soleilMax;
 	private int lune, luneMax;
@@ -23,11 +23,24 @@ public abstract class Joueur {
 	private List<UnMarteau> marteaux;
 
 	private Partie partie;
+	
+	private Bot bot;
 
 	public void setPartie(Partie partie) {
 		this.partie = partie;
 		de1.setPartie(partie);
 		de2.setPartie(partie);
+	}
+	
+	/**
+	 * Change le bot qui fait jouer ce joueur et l'initialise.
+	 * @return lui-même pour faciliter la construction
+	 */
+	public Joueur setBot(Bot bot) {
+		this.bot = bot;
+		this.bot.setJoueur(this);
+		
+		return this;
 	}
 	
 	public Partie getPartie() {
@@ -42,7 +55,9 @@ public abstract class Joueur {
 	 * @param faces les faces que le bot peut appliquer
 	 * @return l'indice de la face à appliquer dans le tableau
 	 */
-	public abstract int choixFace(Face... faces);
+	public int choixFace(Face... faces) {
+		return bot.choixFace(faces);
+	}
 	
 	/**
 	 * Propose plusieurs faces au bot pour qu'il donne l'indice de la face qu'il
@@ -51,28 +66,36 @@ public abstract class Joueur {
 	 * @param faces les faces que le bot peut appliquer
 	 * @return l'indice de la face à appliquer dans le tableau
 	 */
-	public abstract int choixFaceNegatif(Face... faces);
+	public int choixFaceNegatif(Face... faces) {
+		return bot.choixFaceNegatif(faces);
+	}
 
 	/**
 	 * Demande au bot de forger la face donnée sur un de ces dés.
 	 * 
 	 * @param face la face à forger
 	 */
-	public abstract void forge(Face face);
+	public void forge(Face face) {
+		bot.forge(face);
+	}
 
 	/**
 	 * Demande au bot de faire ses achats dans la liste d'achat donnée.
 	 * 
 	 * @param liste ListeAchat générée avec Sanctuaire.getAchatsPossible
 	 */
-	public abstract void faireAchatsFace(ListeAchat liste);
+	public void faireAchatsFace(ListeAchat liste) {
+		bot.faireAchatsFace(liste);
+	}
 
 	/**
 	 * Demande au bot si il veut faire son tour au sanctuaire ou faire des exploits
 	 * 
 	 * @return true si sanctuaire, false si exploit
 	 */
-	public abstract boolean tourSanctuaire();
+	public boolean tourSanctuaire() {
+		return bot.tourSanctuaire();
+	}
 
 	/**
 	 * demande si il veut un tour en plus pour 2 soleils, n'est pas appelé si il
@@ -80,7 +103,9 @@ public abstract class Joueur {
 	 * 
 	 * @return true si oui false sinon
 	 */
-	public abstract boolean faireTourSupplementaire();
+	public boolean faireTourSupplementaire() {
+		return bot.faireTourSupplementaire();
+	}
 
 	/**
 	 * Demande au bot si il veut acheter une carte dans la liste donnée.
@@ -88,18 +113,24 @@ public abstract class Joueur {
 	 * @param cartes que le bot peut acheter
 	 * @return la Carte que le bot veut acheter ou nul si il ne veut rien acheter
 	 */
-	public abstract Carte faireAchatCartes(List<Carte> cartes);
+	public Carte faireAchatCartes(List<Carte> cartes) {
+		return bot.faireAchatCartes(cartes);
+	}
 
 	/**
 	 * choisit le dé que le joueur veut lancer lors d'une faveur mineure
 	 */
-	public abstract De choixFaveurMineure();
+	public De choixFaveurMineure() {
+		return bot.choixFaveurMineure();
+	}
 
 	/**
 	 * demande au bot quelle carte renfort il veut activer dans la liste de ceux
 	 * qu'il n'a pas encore activee (donnee en parametre) ou null si il veut finir
 	 */
-	public abstract CarteRenfort choixRenfort(List<CarteRenfort> liste);
+	public CarteRenfort choixRenfort(List<CarteRenfort> liste) {
+		return bot.choixRenfort(liste);
+	}
 
 	/**
 	 * Demande au bot combien d'or veut-il mettre dans son marteau
@@ -107,7 +138,9 @@ public abstract class Joueur {
 	 * @param or : Or qu'il est possible de placer dans le marteau.
 	 * @return Or que le bot veut placer dans le marteau.
 	 */
-	public abstract int changeOrEnMarteau(int or);
+	public int changeOrEnMarteau(int or) {
+		return bot.changeOrEnMarteau(or);
+	}
 
 	public boolean peutFaireTourSupplementaire() {
 		return soleil >= 2;
@@ -132,8 +165,11 @@ public abstract class Joueur {
 
 		renforts = new ArrayList<>();
 		marteaux= new ArrayList<>();
+		
+		//Bot par défaut
+		setBot(new BotDefault());
 	}
-
+	
 	public void addRenfort(CarteRenfort carte) {
 		renforts.add(carte);
 	}

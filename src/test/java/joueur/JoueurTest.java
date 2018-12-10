@@ -18,7 +18,7 @@ public class JoueurTest {
     @BeforeEach
     void setBefore()
     {
-        joueur = new BotDefault("joeur");
+        joueur = new Joueur("joeur");
     }
 
     /**

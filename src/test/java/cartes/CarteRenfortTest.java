@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import de.De;
 import de.FaceOr;
-import joueur.BotDefault;
 import joueur.Joueur;
 
 class CarteRenfortTest {
@@ -16,7 +15,7 @@ class CarteRenfortTest {
 	@BeforeEach
     void setBefore()
     {
-        joueur = new BotDefault("joeur");
+        joueur = new Joueur("joeur");
     }
 
 	@Test

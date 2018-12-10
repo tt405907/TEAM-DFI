@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import cartes.Carte;
-import joueur.BotDefault;
 import joueur.Joueur;
 
 public class PlateauTest {
@@ -20,7 +19,7 @@ public class PlateauTest {
 
 	@BeforeEach
 	void setBefore() {
-		joueur = new BotDefault("joeur");
+		joueur = new Joueur("joeur");
 	}
 
 	@Test
@@ -89,7 +88,7 @@ public class PlateauTest {
 	void testDeplacementPlateau() {
 		// crée un plateau avec des cartes par défaut
 		Plateau plateau = new Plateau(2);
-		Joueur joueur2 = new BotDefault("joeur");
+		Joueur joueur2 = new Joueur("joeur");
 
 		// donne assez aux 2 joueurs pour acheter une carte
 		joueur.addSoleil(4);
