@@ -24,7 +24,7 @@ public abstract class Bot {
 		reset();
 	}
 	
-	protected Joueur getJoueur() {
+	public Joueur getJoueur() {
 		return joueur;
 	}
 	
