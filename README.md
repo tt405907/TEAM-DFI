@@ -7,6 +7,11 @@ Comptes GitHub des membres de l'équipe :
 * **aa303554** = Arnaud Arbona
 * **ThomasPortet** = Thomas Portet
 
+# Lancement du projet
+
+* `mvn exec:java@partie` lance une seule partie avec le détail des actions.
+* `mvn exec:java@stat` lance 500 partie et collecte les taux de victoire des différents joueurs.
+
 # Itérations
 
 * 26/10 - Partie à plusieurs joueurs avec dés et faces

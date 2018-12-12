@@ -104,33 +104,26 @@
                 <version>1.6.0</version> <!-- à ne pas changer : c'est la version du plugin (et pas de java) -->
                 <executions>
                     <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
+                        <id>partie</id>
+                        <goals><goal>java</goal></goals>
+                        <configuration>
+                            <mainClass>Detail</mainClass>
+                            <arguments>
+                                    <argument>4</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stat</id>
+                        <goals><goal>java</goal></goals>
+                        <configuration>
+                            <mainClass>Simulation</mainClass>
+                            <arguments>
+                                    <argument>4</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>Main
-                    </mainClass>  <!-- à changer : classe avec point d'entrée pour votre projet -->
-                    <!-- argument de la commande java (en plus du nom de la classe et du classpath -->
-
-                    <!-- arguments récupérés dans le main -->
-                    <!--
-                        <arguments>
-                                <argument>argument1</argument>
-                        </arguments>
-                    -->
-
-                    <!-- arguments de configuration système -->
-                    <!--
-                        <systemProperties>
-                                <systemProperty>
-                                    <key>myproperty</key>
-                                    <value>myvalue</value>
-                                </systemProperty>
-                        </systemProperties>
-                     -->
-                </configuration>
             </plugin>
 
         </plugins>
