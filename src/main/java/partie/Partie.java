@@ -111,7 +111,7 @@ public class Partie {
 	 */
 	public List<Joueur> game() {
 		for (int i = 0; i < joueurs.length; i++) {
-			joueurs[i].addOr(4 - i);
+			joueurs[i].addOr(3 - i);
 		}
 		if (printing) {
 			for (Joueur j : joueurs) {
