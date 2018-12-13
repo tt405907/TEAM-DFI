@@ -12,16 +12,16 @@ public class Simulation {
 	private static Map<Bot, Statistics> scores = new HashMap<>();
 
 	public static void main(String[] args) {
-		int nbJoueurs = Integer.parseInt(args[0]);;
+		int nbJoueurs = Integer.parseInt(args[0]);
 		if (nbJoueurs < 2 || nbJoueurs > 4) throw new IllegalArgumentException(nbJoueurs + " n'est pas un nombre de joueur valide.");
 		
 		List<Bot> bots = new ArrayList<>();
 		bots.add(new BotSoleil());
-		bots.add(new BotVictoire());
-		if (nbJoueurs >= 3) bots.add(new BotUltime());
+		bots.add(new BotUltime());
+		if (nbJoueurs >= 3) bots.add(new BotVictoire());
 		if (nbJoueurs >= 4) bots.add(new BotRandom());
 		
-		int nbParties = 10000;
+		int nbParties = 1000;
 		
 		for (Bot b : bots) scores.put(b, new Statistics());
 		
