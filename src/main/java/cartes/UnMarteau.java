@@ -2,9 +2,15 @@ package cartes;
 
 import joueur.Joueur;
 
+/**
+ * Un Marteau est obtainable grace à la carte marteau du forgeron et permet de
+ * transformer l'or obtenu en potentiels points de victoires
+ */
 public class UnMarteau {
 
-	// Un marteau contient un jeton qui traque l'avancement sur la carte
+	/**
+	 * Un marteau contient un jeton qui traque l'avancement sur la carte
+	 */
 	private int jeton;
 	private Joueur joueur;
 
@@ -18,16 +24,15 @@ public class UnMarteau {
 	 * ses marteaux et qu'il en possède au moins un.
 	 * 
 	 * @param orAPlacer : L'or que le joueur veut placer dans son marteau
-	 * @return 0 si l'achat s'est déroulé classiquement ; 
-	 * 		   1 si la première face se complète ; 
-	 *		   2 si le marteau est terminé ; 
-	 * 		   3 si le marteau est terminé et qu'un nouveau est commencé.
+	 * @return 0 si l'achat s'est déroulé classiquement ; 1 si la première face se
+	 *         complète ; 2 si le marteau est terminé ; 3 si le marteau est terminé
+	 *         et qu'un nouveau est commencé.
 	 */
 	public int effetAddOr(int orAPlacer) {
 		// cas où on dépasse ou atteint les 30 et finit le marteau,
 		// on supprime alors ce dernier
 		if (jeton + orAPlacer >= 30) {
-			if (jeton < 15 )
+			if (jeton < 15)
 				joueur.addVictoire(10);
 			joueur.addVictoire(15);
 			joueur.delMarteau(this);

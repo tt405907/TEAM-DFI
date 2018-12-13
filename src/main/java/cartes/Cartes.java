@@ -1,9 +1,13 @@
 package cartes;
 
-// contient les instances de classes
+/**
+ * contient les instances de classes, on utilise des singletons pour faciliter
+ * les tests d'égalité
+ */
 public class Cartes {
-	private Cartes() {}
-	
+	private Cartes() {
+	}
+
 	public static final Carte MARTEAU = new MarteauDuForgeron();
 	public static final Carte COFFRE = new CoffreDuForgeron();
 	public static final CarteRenfort SABOTS = new SabotsArgent();

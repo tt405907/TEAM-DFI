@@ -3,6 +3,9 @@ package cartes;
 import de.Faces;
 import joueur.Joueur;
 
+/**
+ * Le miroir abyssal donne une face miroir au joueur à forger.
+ */
 public class MiroirAbyssal extends Carte {
 
 	public MiroirAbyssal() {
