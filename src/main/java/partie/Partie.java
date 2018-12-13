@@ -13,7 +13,11 @@ import sanctuaire.Sanctuaire;
 public class Partie {
 	private Joueur[] joueurs;
 	private int nbTour;
+
+
 	private Sanctuaire sanctuaire;
+
+
 	private Plateau plateau;
 
 	private boolean printing = false;
@@ -197,5 +201,10 @@ public class Partie {
 			return;
 		System.out.println("Renfort: " + carte);
 	}
-
+	public Sanctuaire getSanctuaire() {
+		return sanctuaire;
+	}
+	public Plateau getPlateau() {
+		return plateau;
+	}
 }

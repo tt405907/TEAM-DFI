@@ -27,6 +27,7 @@ import de.Face;
 import joueur.Joueur;
 
 public class Sanctuaire {
+
 	//Faces encore en stock
 	private List<Face> faces;
 	
@@ -99,6 +100,9 @@ public class Sanctuaire {
 				.collect(Collectors.toCollection(ArrayList::new));
 		
 		return new ListeAchat(this, j, disponibles);
+	}
+	public List<Face> getFaces() {
+		return faces;
 	}
 
 }

@@ -5,24 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import joueur.Bot;
-import joueur.BotRandom;
-import joueur.BotSoleil;
-import joueur.BotVictoire;
-import joueur.Joueur;
+import joueur.*;
 import partie.Partie;
 
 public class Simulation {
 	private static Map<Bot, Statistics> scores = new HashMap<>();
 
 	public static void main(String[] args) {
-		int nbJoueurs = Integer.parseInt(args[0]);
+		int nbJoueurs = Integer.parseInt(args[0]);;
 		if (nbJoueurs < 2 || nbJoueurs > 4) throw new IllegalArgumentException(nbJoueurs + " n'est pas un nombre de joueur valide.");
 		
 		List<Bot> bots = new ArrayList<>();
 		bots.add(new BotSoleil());
 		bots.add(new BotVictoire());
-		if (nbJoueurs >= 3) bots.add(new BotRandom());
+		if (nbJoueurs >= 3) bots.add(new BotUltime());
 		if (nbJoueurs >= 4) bots.add(new BotRandom());
 		
 		int nbParties = 10000;

@@ -11,6 +11,7 @@ import partie.Partie;
 
 public class Plateau {
 
+
 	private List<Carte> cartes;
 
 	private Partie partie;
@@ -106,5 +107,8 @@ public class Plateau {
 				portails[p] = acheteur;
 
 		}
+	}
+	public List<Carte> getCartes() {
+		return cartes;
 	}
 }
