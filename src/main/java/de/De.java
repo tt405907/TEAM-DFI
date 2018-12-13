@@ -49,6 +49,10 @@ public class De
         return this.allFaces[indice];
     }
     
+    public Face[] getAllFaces() {
+    	return allFaces;
+    }
+    
     /**
      * Donne la dernière face que ce dé à appliqué.
      * @return la dernière Face appliquée par ce dé
