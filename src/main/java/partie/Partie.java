@@ -14,9 +14,7 @@ public class Partie {
 	private Joueur[] joueurs;
 	private int nbTour;
 
-
 	private Sanctuaire sanctuaire;
-
 
 	private Plateau plateau;
 
@@ -72,9 +70,9 @@ public class Partie {
 					j.appliquerDe();
 				}
 			}
-			
+
 			act.utiliserRenforts();
-			
+
 			if (printing) {
 				System.out.println("Action");
 			}
@@ -96,9 +94,9 @@ public class Partie {
 			}
 		}
 	}
-	
+
 	public Joueur[] getEnnemis(Joueur joueur) {
-		Joueur[] ennemis = new Joueur[joueurs.length-1];
+		Joueur[] ennemis = new Joueur[joueurs.length - 1];
 		int index = 0;
 		for (Joueur j : joueurs) {
 			if (j != joueur) {
@@ -106,7 +104,7 @@ public class Partie {
 				index++;
 			}
 		}
-		
+
 		return ennemis;
 	}
 
@@ -148,7 +146,14 @@ public class Partie {
 	}
 
 	// Fonctions d'affichage
-	// Un joueur achète une carte
+
+	/**
+	 * On affiche le fait qu'un joueur achète une carte ainsi que le coût de
+	 * celle-ci et ce qu'elle lui rapporte.
+	 * 
+	 * @param acheteur Le joueur qui achète une carte.
+	 * @param carte    La carte achetée.
+	 */
 	public void printExploit(Joueur acheteur, Carte carte) {
 		if (!printing)
 			return;
@@ -165,45 +170,72 @@ public class Partie {
 		System.out.println("Exploit: " + carte + " +" + carte.getVictoire() + " victoire " + cost);
 	}
 
-	// Un joueur est chassé de son île
+	/**
+	 * On affiche le fait qu'un joueur soit chassé par un autre joueur qui a pris un
+	 * exploit sur son portail actuel.
+	 * 
+	 * @param chasse le joueur concerné
+	 */
 	public void printChasse(Joueur chasse) {
 		if (!printing)
 			return;
 		System.out.println(chasse + " reçoit une faveur des dieux pour avoir bougé");
 	}
 
-	// Un joueur a lancé ces dés
-	public void printRoll(Joueur joueur, Face face1, Face face2, Face replacement1, Face replacement2) {
+	/**
+	 * Cette fonction décrit le lancer de dés d'un joueur. Si un miroir a copié une
+	 * face, affiche quelle face a été copiée, sinon remplacement1 est égale à face1
+	 * et remplacement2 à face2.
+	 * 
+	 * @param joueur        Le joueur lançant les dés.
+	 * @param face1         La première face lancée.
+	 * @param face2         La seconde face lancée.
+	 * @param remplacement1 La face copiée par le miroir de la face1.
+	 * @param remplacement2 La face copiée par le miroir de la face2.
+	 */
+	public void printRoll(Joueur joueur, Face face1, Face face2, Face remplacement1, Face remplacement2) {
 		if (!printing)
 			return;
-		//Si un miroir a copié une face, affiche quelle face a été copiée
-		String strFace1 = face1 == replacement1 ? face1.toString() : face1 + " (" + replacement1 + ")";
-		String strFace2 = face2 == replacement2 ? face2.toString() : face2 + " (" + replacement2 + ")";
+		String strFace1 = face1 == remplacement1 ? face1.toString() : face1 + " (" + remplacement1 + ")";
+		String strFace2 = face2 == remplacement2 ? face2.toString() : face2 + " (" + remplacement2 + ")";
 		System.out.println(joueur + ": " + strFace1 + " et " + strFace2);
 	}
 
-	// Un joueur a lancé un dé
+	/**
+	 * On affiche le lancer de dé unique d'un joueur, lors d'une faveur mineure par
+	 * exemple.
+	 * 
+	 * @param joueur Le joueur qui lance le dé
+	 * @param face   La face obtenue
+	 */
 	public void printRoll(Joueur joueur, Face face) {
 		if (!printing)
 			return;
 		System.out.println(joueur + ": " + face);
 	}
 
-	// Un dé se fait forger une face
+	/**
+	 * On affiche le fait qu'une nouvelle face est forgée
+	 * 
+	 * @param old  La face remplacée
+	 * @param newz La face forgée
+	 */
 	public void printForge(Face old, Face newz) {
 		if (!printing)
 			return;
 		System.out.println("Forge: " + old + " -> " + newz + " (pour " + newz.getPrix() + " or)");
 	}
-	
+
 	public void printRenfort(CarteRenfort carte) {
 		if (!printing)
 			return;
 		System.out.println("Renfort: " + carte);
 	}
+
 	public Sanctuaire getSanctuaire() {
 		return sanctuaire;
 	}
+
 	public Plateau getPlateau() {
 		return plateau;
 	}

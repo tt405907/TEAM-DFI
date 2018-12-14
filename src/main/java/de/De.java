@@ -42,7 +42,7 @@ public class De
     /**
      * Permettant la prise d'une face d'un de a l'aide d'un int (indice)
      * @param indice l'indice de la face du De que l'on veut
-     * @return Retourne donne la face a l'indice mentionne
+     * @return Retourne donne la face a l'indice mentionné
      * */
     public Face getFace(int indice)
     {
@@ -54,7 +54,7 @@ public class De
     }
     
     /**
-     * Donne la dernière face que ce dé à appliqué.
+     * Donne la dernière face que ce dé a appliqué.
      * @return la dernière Face appliquée par ce dé
      */
     public Face getLastFace()
@@ -79,7 +79,7 @@ public class De
     /**
      * Remplace la Face à l'indice indice par face.
      * @param face Face à poser
-     * @param indice Emplacement où face sera posée
+     * @param indice Emplacement où la face sera posée
      */
     public void forge(Face face, int indice)
     {
