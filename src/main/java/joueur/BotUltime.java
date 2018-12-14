@@ -35,7 +35,7 @@ public class BotUltime extends Bot {
 
 
     /**
-     * Donnent le nombres de ressources en plus de l'Or que l'ont peut avoir en même temps sur cette face
+     * Donne le nombres de ressources en plus de l'Or que l'on peut avoir en même temps sur cette face
      */
     private int valeurAccessoireOr(Face face) {
         if (face == Faces.OR_2_LUNE_1) {
@@ -49,7 +49,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * Donnent le nombres de ressources en plus de la Lune que l'ont peut avoir en meme temps sur cette face
+     * Donne le nombres de ressources en plus de la Lune que l'on peut avoir en même temps sur cette face
      */
     private int valeurAccessoireLune(Face face) {
         if (face == Faces.LUNE_2_VICTOIRE_2 || face == Faces.OR_2_LUNE_1) {
@@ -63,7 +63,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * Donnent le nombres de ressources en plus des Pdv que l'ont peut avoir en meme temps sur cette face
+     * Donne le nombres de ressources en plus des Pdv que l'on peut avoir en même temps sur cette face
      */
     private int valeurAccessoireVictoire(Face face) {
         if (face == Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1) {
@@ -79,7 +79,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * Donnent le nombres de ressources en plus des Soleils que l'ont peut avoir en meme temps sur cette face
+     * Donne le nombres de ressources en plus des Soleils que l'on peut avoir en même temps sur cette face
      */
     private int valeurAccessoireSoleil(Face face) {
         if (face == Faces.SOLEIL_1_VICTOIRE_1) {
@@ -107,7 +107,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * donne l'indice de la Face qui va être appliquer de manière négatif sur mon joueur
+     * donne l'indice de la Face qui va être appliquée de manière négatif sur mon joueur
      */
     @Override
     public int choixFaceNegatif(Face... faces) {
@@ -124,23 +124,23 @@ public class BotUltime extends Bot {
             boolean boolSol = (valeurSol == 0);
             boolean boolVic = (valeurVic == 0);
 
-            // si on a pas de points de victoires et que la face donne uniquement des Pdv
+            // si on n'a pas de points de victoires et que la face rapporte uniquement des Pdv
             if (valeurVic >= 0 && boolOr && boolLun && boolSol && this.getJoueur().getVictoire() == 0) {
                 return indice;
             }
-            // Si on a pas de Soleil et que la face donne uniquement du Soleil
+            // Si on n'a pas de Soleil et que la face rapporte uniquement du Soleil
             if (valeurSol >= 0 && boolLun && boolOr && boolVic && this.getJoueur().getSoleil() == 0) {
                 return indice;
             }
-            // Si on a pas d'Or et que la face donne uniquement de l'Or
+            // Si on n'a pas d'Or et que la face rapporte uniquement de l'Or
             if (valeurOr >= 0 && boolVic && boolLun && boolSol && this.getJoueur().getOr() == 0) {
                 return indice;
             }
-            // Si on a pas de Lune et que la face donne uniquement de la Lune
+            // Si on n'a pas de Lune et que la face rapporte uniquement de la Lune
             if (valeurLun >= 0 && boolOr && boolSol && boolVic && this.getJoueur().getLune() == 0) {
                 return indice;
             }
-            // On choisit alors la face qui nous perde le moins d'Or
+            // On choisit alors la face qui nous fait perdre le moins d'Or
             if (valeurOr > 0 && valeurOr <= poidFace && valeurAccessoireOr(faces[indice]) <= bonus) {
                 choix = indice;
                 poidFace = valeurOr;
@@ -151,7 +151,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * Donne l'indice de la Face ayant le moins de Victoire
+     * Donne l'indice de la Face rapportant le moins de victoire
      */
     private int getMinIndiceVictoire(De de) {
         int choix = 0;
@@ -160,13 +160,13 @@ public class BotUltime extends Bot {
         for (int indice = 0; indice < 6; indice++) {
             int valueVictoire = BotUtils.valeurVictoire(de.getFace(indice));
             int valueBonus = valeurAccessoireVictoire(de.getFace(indice));
-            // Si la Face à moins de Victoire
+            // Si la Face rappporte moins de Victoire
             if (valueVictoire < poidFace && valueVictoire >= 1 && de.getFace(indice) != Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1 ) {
                 choix = indice;
                 poidFace = valueVictoire;
                 bonus = valueBonus;
             }
-            // Si la Face à  autant de Victoire mais moins de Ressources Annexes
+            // Si la Face rapporte autant de Victoire mais moins de Ressources Annexes
             if (valueVictoire == poidFace && valueBonus < bonus) {
                 choix = indice;
                 poidFace = valueVictoire;
@@ -177,7 +177,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * Donne l'indice de la Face ayant le moins de Soleil
+     * Donne l'indice de la Face rapportant le moins de Soleil
      */
     private int getMinIndiceSoleil(De de) {
         int choix = 0;
@@ -186,13 +186,13 @@ public class BotUltime extends Bot {
         for (int indice = 0; indice < 6; indice++) {
             int valueSoleil = BotUtils.valeurSoleil(de.getFace(indice));
             int valueBonus = valeurAccessoireSoleil(de.getFace(indice));
-            // Si la Face à moins de Soelil
+            // Si la Face rapporte moins de Soelil
             if (valueSoleil < poidFace && valueSoleil >= 1 && de.getFace(indice) != Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1 ) {
                 choix = indice;
                 poidFace = valueSoleil;
                 bonus = valueBonus;
             }
-            // Si la Face à  autant de Soleil mais moins de Ressources Annexes
+            // Si la Face rapporte autant de Soleil mais moins de Ressources Annexes
             if (valueSoleil == poidFace && valueBonus < bonus ) {
                 choix = indice;
                 poidFace = valueSoleil;
@@ -203,7 +203,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * Donne l'indice de la Face ayant le moins d'Or
+     * Donne l'indice de la Face rapportant le moins d'Or
      */
     private int getMinIndiceOr(De de) {
         int choix = 0;
@@ -212,13 +212,13 @@ public class BotUltime extends Bot {
         for (int indice = 0; indice < 6; indice++) {
             int valueOr = valeurOr(de.getFace(indice));
             int valueBonus = valeurAccessoireOr(de.getFace(indice));
-            // Si la Face à moins d'Or
+            // Si la Face rapporte moins d'Or
             if (valueOr < poidFace && valueOr >= 1 && de.getFace(indice) != Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1 ) {
                 choix = indice;
                 poidFace = valueOr;
                 bonus = valueBonus;
             }
-            // Si la Face à autant D'Or mais moins de Ressources Annexes
+            // Si la Face rapporte autant d'Or mais moins de Ressources Annexes
             if (valueOr == poidFace && valueBonus < bonus) {
                 choix = indice;
                 poidFace = valueOr;
@@ -229,7 +229,7 @@ public class BotUltime extends Bot {
     }
 
     /**
-     * Donne l'indice de la Face ayant le moins de Lune
+     * Donne l'indice de la Face rapportant le moins de Lune
      */
     private int getMinIndiceLune(De de) {
         int choix = 0;
@@ -238,13 +238,13 @@ public class BotUltime extends Bot {
         for (int indice = 0; indice < 6; indice++) {
             int valueLune = BotUtils.valeurLune(de.getFace(indice));
             int valueBonus = valeurAccessoireLune(de.getFace(indice));
-            // Si la Face à moins de Lune
+            // Si la Face rapporte moins de Lune
             if (valueLune < poidFace && valueLune >= 1 && de.getFace(indice) != Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1 ) {
                 choix = indice;
                 poidFace = valueLune;
                 bonus = valueBonus;
             }
-            // Si la Fce à  autant de Lune mais moins de REssources Annexes
+            // Si la Face rapporte autant de Lune mais moins de Ressources Annexes
             if (valueLune == poidFace && valueBonus < bonus) {
                 choix = indice;
                 poidFace = valueLune;
@@ -275,13 +275,13 @@ public class BotUltime extends Bot {
         De tempDe1 = getJoueur().de1;
         De tempDe2 = getJoueur().de2;
 
-        Face faceMinOrDe1 = tempDe1.getFace(minIndiceOrDe1);
+        tempDe1.getFace(minIndiceOrDe1);
         Face faceMinOrDe2 = tempDe2.getFace(minIndiceOrDe2);
         Face faceMinLuneDe1 = tempDe1.getFace(minIndiceLuneDe1);
-        Face faceMinLuneDe2 = tempDe2.getFace(minIndiceLuneDe2);
-        Face faceMinVictoireDe1 = tempDe1.getFace(minIndiceVictoireDe1);
+        tempDe2.getFace(minIndiceLuneDe2);
+        tempDe1.getFace(minIndiceVictoireDe1);
         Face faceMinVictoireDe2 = tempDe2.getFace(minIndiceVictoireDe2);
-        Face faceMinSoleilDe1 = tempDe1.getFace(minIndiceSoleilDe1);
+        tempDe1.getFace(minIndiceSoleilDe1);
         Face faceMinSoleilDe2 = tempDe2.getFace(minIndiceSoleilDe2);
 
         //  On Traite la X3
@@ -291,8 +291,8 @@ public class BotUltime extends Bot {
         }
 
         // On traite MIROIR
-        // Normalement impossible qu'il y en est mais bon on traite tous les au cas ou
-        // Si y'en a un je le met à la place de ma face qui me rapporte de la victoire
+        // Normalement impossible que notre joueur en achète, mais on traite ce cas quand même.
+        // Si il y en a un, il est placé à la place de la face rapportant le moins de victoire.
         if (face == Faces.MIROIR && action == 0) {
             getJoueur().de2.forge(face, minIndiceVictoireDe2);
             action++;
@@ -402,20 +402,9 @@ public class BotUltime extends Bot {
     }
 
 
+    
     /**
-     * Donne si la FAce est dans la liste
-     */
-    private boolean checkFace(List<Face> liste,Face face)
-    {
-        for (Face faces : liste) {
-            if (faces == face) {
-                return true;
-            }
-        }
-        return false;
-    }
-    /**
-     * Donnent le nombre de Cartes disponnible de la carte donné en paramètre
+     * Donne le nombre de Cartes disponibles de la carte donnée en paramètre
      */
     private int nombreCartes(List<Carte> liste , Carte carte)
     {
@@ -444,26 +433,24 @@ public class BotUltime extends Bot {
         boolean checkSOLEIL_2;
         boolean checkSOLEIL_1_VICTOIRE_1;
         boolean checkSOLEIL_1;
-        boolean checkVICTOIRE_3;
-        boolean checkVICTOIRE_4;
-
         while (!liste.isEmpty()) {
             action = false;
-            checkOR_1_LUNE_1_SOLEIL_1_VICTOIRE_1 = checkFace(liste.getAvailable(),Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1);
-            checkOR_6 = checkFace(liste.getAvailable(),Faces.OR_6);
-            checkOR_3_OU_VICTOIRE_2 = checkFace(liste.getAvailable(),Faces.OR_3_OU_VICTOIRE_2);
-            checkOR_4 = checkFace(liste.getAvailable(),Faces.OR_4);
-            checkOR_3 = checkFace(liste.getAvailable(),Faces.OR_3);
-            checkOR_2_LUNE_1 = checkFace(liste.getAvailable(),Faces.OR_2_LUNE_1);
-            checkLUNE_2_VICTOIRE_2 = checkFace(liste.getAvailable(),Faces.LUNE_2_VICTOIRE_2);
-            checkLUNE_2 = checkFace(liste.getAvailable(),Faces.LUNE_2);
-            checkLUNE_1 = checkFace(liste.getAvailable(),Faces.LUNE_1);
-            checkOR_2_OU_LUNE_2_OU_SOLEIL_2 = checkFace(liste.getAvailable(),Faces.OR_2_OU_LUNE_2_OU_SOLEIL_2);
-            checkSOLEIL_2 = checkFace(liste.getAvailable(),Faces.SOLEIL_2);
-            checkSOLEIL_1_VICTOIRE_1 = checkFace(liste.getAvailable(),Faces.SOLEIL_1_VICTOIRE_1);
-            checkSOLEIL_1 = checkFace(liste.getAvailable(),Faces.SOLEIL_1);
-            checkVICTOIRE_3 = checkFace(liste.getAvailable(),Faces.VICTOIRE_3);
-            checkVICTOIRE_4 = checkFace(liste.getAvailable(),Faces.VICTOIRE_4);
+            List<Face> facesDisponibles = liste.getAvailable();
+            checkOR_1_LUNE_1_SOLEIL_1_VICTOIRE_1 = facesDisponibles.contains(Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1);
+            checkOR_6 = facesDisponibles.contains(Faces.OR_6);
+            checkOR_3_OU_VICTOIRE_2 = facesDisponibles.contains(Faces.OR_3_OU_VICTOIRE_2);
+            checkOR_4 = facesDisponibles.contains(Faces.OR_4);
+            checkOR_3 = facesDisponibles.contains(Faces.OR_3);
+            checkOR_2_LUNE_1 = facesDisponibles.contains(Faces.OR_2_LUNE_1);
+            checkLUNE_2_VICTOIRE_2 = facesDisponibles.contains(Faces.LUNE_2_VICTOIRE_2);
+            checkLUNE_2 = facesDisponibles.contains(Faces.LUNE_2);
+            checkLUNE_1 = facesDisponibles.contains(Faces.LUNE_1);
+            checkOR_2_OU_LUNE_2_OU_SOLEIL_2 = facesDisponibles.contains(Faces.OR_2_OU_LUNE_2_OU_SOLEIL_2);
+            checkSOLEIL_2 = facesDisponibles.contains(Faces.SOLEIL_2);
+            checkSOLEIL_1_VICTOIRE_1 = facesDisponibles.contains(Faces.SOLEIL_1_VICTOIRE_1);
+            checkSOLEIL_1 = facesDisponibles.contains(Faces.SOLEIL_1);
+            facesDisponibles.contains(Faces.VICTOIRE_3);
+            facesDisponibles.contains(Faces.VICTOIRE_4);
 
             // Dé 1 < 11 Or
             if (BotUtils.valeurDe(VALEUR_OR,getJoueur().de1) < VALEUR_OR_MINIMUM_DE1) {
@@ -565,7 +552,7 @@ public class BotUltime extends Bot {
                     action = true;
                 }
             }
-            // Si il n'a pas fait d'action on stop, car ca veut dire qu'il y a rien d'interressant pour le joueur a acheter
+            // Si il n'a pas fait d'action on s'arrête, car cela veut dire qu'il n'y a plus rien d'intéressant pour le joueur à acheter
             if (!action) {
                 break;
             }
@@ -592,39 +579,39 @@ public class BotUltime extends Bot {
     public boolean tourSanctuaire() {
         List<Face> listAchetable = this.getJoueur().getPartie().getSanctuaire().getFaces();
         // Dé 1 valeur Or < VALEUR_OR_MINIMUM_DE1 && qu'on peut avoir une Face >= OR_3 on va la prendre
-        if (BotUtils.valeurDe(VALEUR_OR,getJoueur().de1) < VALEUR_OR_MINIMUM_DE1 && checkFace(listAchetable,Faces.OR_3) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_OR,getJoueur().de1) < VALEUR_OR_MINIMUM_DE1 && listAchetable.contains(Faces.OR_3) && this.getJoueur().getOr() >= 2) {
             return true;
         }
         // Dé 1 valeur Lune <= 2 && qu'on peut avoir une Face >= Lune 1 on va la prendre
-        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de1) <= 2 && checkFace(listAchetable,Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de1) <= 2 && listAchetable.contains(Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
             return true;
         }
-        // Marteau du Forgeron en avoir toujours 1 si il y en a encore
+        // Marteau du Forgeron : en avoir toujours 1 si il en reste.
         if (this.getJoueur().getNextMarteau() == null && nombreCartes(this.getJoueur().getPartie().getPlateau().getCartes(),Cartes.MARTEAU) > 0) {
             return false;
         }
-        // Si on a toujours pas augmenter notre stock max il faut le faire car on risque d'être full donc
-        // si on peut avoir le Coffre du forgeron et qu'on en a pas déjà,  un on le prend
+        // Si on n'a toujours pas augmenté notre stock max il faut le faire car on risque d'être limité donc
+        // si on peut acheter le Coffre du forgeron et qu'on n'en a pas encore, on le prend.
         if (this.getJoueur().getOrMax() == VALEUR_MAX_RESERVE_OR_INIT && this.getJoueur().getLune() >= 1) {
             return false;
         }
-        // Si on peut avoir le Casque d'invisibilité , la carte qui donne la face x3
+        // Si on peut avoir le Casque d'invisibilité, la carte qui donne la face x3
         if (this.getJoueur().getLune() >= PRIX_CASQUE_CARTE) {
             return false;
         }
         // Dé 2 valeur Soleil <= 2 && qu'on peut avoir une Face >= Soleil 1  on va la prendre
-        if (BotUtils.valeurDe(VALEUR_SOLEIL,getJoueur().de2) <= VALEUR_SOLEIL_MINIMUM_DE2 && checkFace(listAchetable,Faces.SOLEIL_1) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_SOLEIL,getJoueur().de2) <= VALEUR_SOLEIL_MINIMUM_DE2 && listAchetable.contains(Faces.SOLEIL_1) && this.getJoueur().getOr() >= 2) {
             return true;
         }
         // Dé 2 valeur Lune < 1 && qu'on peut avoir une Face >= Lune_1 on va la prendre
-        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de2) < VALEUR_LUNE_MINIMUM_DE2 && checkFace(listAchetable,Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de2) < VALEUR_LUNE_MINIMUM_DE2 && listAchetable.contains(Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
             return true;
         }
         // Si on a un marteau en cours on va voir si on peut acheter une carte intérréssante
         if (this.getJoueur().getNextMarteau() != null) {
             return false;
         }
-        // Aussi non on va essayer d'optimiser nos pièces déjà présentes sur nos Dé
+        // Autrement on va essayer d'optimiser nos pièces déjà présentes sur nos Dé
         else {
             return true;
         }
@@ -634,11 +621,11 @@ public class BotUltime extends Bot {
     public boolean faireTourSupplementaire() {
         List<Face> listAchetable = this.getJoueur().getPartie().getSanctuaire().getFaces();
         // Dé 1 valeur Or < VALEUR_OR_MINIMUM_DE1
-        if (BotUtils.valeurDe(VALEUR_OR,getJoueur().de1) < VALEUR_OR_MINIMUM_DE1 && checkFace(listAchetable,Faces.OR_3) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_OR,getJoueur().de1) < VALEUR_OR_MINIMUM_DE1 && listAchetable.contains(Faces.OR_3) && this.getJoueur().getOr() >= 2) {
             return true;
         }
         // Dé 1 valeur Lune <= 2
-        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de1) <= VALEUR_LUNE_MINIMUM_DE1 && checkFace(listAchetable,Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de1) <= VALEUR_LUNE_MINIMUM_DE1 && listAchetable.contains(Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
             return true;
         }
         // Marteau du Forgeron en avoir toujours 1 si possible
@@ -654,16 +641,16 @@ public class BotUltime extends Bot {
         {
             return true;
         }
-        // Casque D'invisbilité dés qu'on peut
+        // Casque D'invisbilité dès que possible
         //if (this.getJoueur().getLune() >= PRIX_CASQUE_CARTE && nombreCartes(getJoueur().getPartie().getPlateau().getCartes(),Cartes.CASQUE) > 0) {
         //    return true;
         //}
         // Dé 2 valeur Soleil <= 2
-        if (BotUtils.valeurDe(VALEUR_SOLEIL,getJoueur().de2) <= VALEUR_SOLEIL_MINIMUM_DE2 && checkFace(listAchetable,Faces.SOLEIL_1) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_SOLEIL,getJoueur().de2) <= VALEUR_SOLEIL_MINIMUM_DE2 && listAchetable.contains(Faces.SOLEIL_1) && this.getJoueur().getOr() >= 2) {
             return true;
         }
         // Dé 2 valeur Lune < 1
-        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de2) < VALEUR_LUNE_MINIMUM_DE2 && checkFace(listAchetable,Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
+        if (BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de2) < VALEUR_LUNE_MINIMUM_DE2 && listAchetable.contains(Faces.LUNE_1) && this.getJoueur().getOr() >= 2) {
             return true;
         }
         return false;
@@ -682,11 +669,11 @@ public class BotUltime extends Bot {
         {
             return Cartes.HYDRE;
         }
-        // Si le joueur n'a pas de Marteau Forgeron et qu'il y en a encore
+        // Si le joueur n'a pas de Marteau Forgeron et qu'il en reste
         if (this.getJoueur().getNextMarteau() == null && nombreCartes(cartes,Cartes.MARTEAU) > 0) {
             return Cartes.MARTEAU;
         }
-        // Si le joueur il n'a pas encore acheter son coffre du forgeron
+        // Si le joueur n'a pas encore acheté son coffre du forgeron
         if (this.getJoueur().getOrMax() == VALEUR_MAX_RESERVE_OR_INIT && nombreCartes(cartes,Cartes.COFFRE) > 0) {
             return Cartes.COFFRE;
         }
@@ -703,11 +690,11 @@ public class BotUltime extends Bot {
         {
             return Cartes.PINCE;
         }
-        // Si y'a plus de marteau de disponible à acheter il commence à faire une transition avec la carte Ancien
+        // Si il n'y a plus de marteau achetable il commence à faire une transition avec la carte Ancien
         if (nombreCartes(this.getJoueur().getPartie().getPlateau().getCartes(),Cartes.ANCIEN) == 0) {
             return Cartes.ANCIEN;
         }
-        // Aussi non il économise et il fait aucun choix
+        // Autrement, il économise et ne fait aucun choix
         return null;
     }
 
@@ -724,7 +711,7 @@ public class BotUltime extends Bot {
     @Override
     public CarteRenfort choixRenfort(List<CarteRenfort> liste) {
         // Il commence par les Sabots pour optimiser son échange d'or avec l'ancien
-        // Même si normalement il va jamais prendre la carte SABOTS
+        // Même si normalement il ne va jamais prendre la carte SABOTS
         if (this.peutUtiliser(liste, Cartes.SABOTS)) {
             return Cartes.SABOTS;
         } else if (peutUtiliser(liste, Cartes.AILES)) {
@@ -737,7 +724,7 @@ public class BotUltime extends Bot {
 
     @Override
     public int changeOrEnMarteau(int orChangeable) {
-        // Si il a le mimimnum de value par Dé et qu'il a un marteau
+        // Si il a le minimum de valeur par Dé et qu'il a un marteau
         if (BotUtils.valeurDe(VALEUR_OR,getJoueur().de1) <= VALEUR_OR_MINIMUM_DE1 && BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de1) < VALEUR_LUNE_MINIMUM_DE1 && BotUtils.valeurDe(VALEUR_SOLEIL,getJoueur().de2) < VALEUR_SOLEIL_MINIMUM_DE2 && BotUtils.valeurDe(VALEUR_LUNE,getJoueur().de2) < VALEUR_LUNE_MINIMUM_DE2 && this.getJoueur().getNextMarteau() != null) {
             return orChangeable/2;
         }
