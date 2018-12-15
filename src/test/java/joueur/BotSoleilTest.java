@@ -50,10 +50,10 @@ public class BotSoleilTest {
     void choixFace()
     {
 		int i1;
-		//notre bot choisit-il bien toujours la face rapportant le plus de points de victoire ?
+		//notre bot choisit-il bien toujours la face rapportant le plus de soleil ?
 		i1=joueur.choixFace(face1,face2,face3,face4,face5);
 		assertEquals(3,i1);
-		//si les faces ont le même nombre de victoire, il choisit bien une face, arbitairement la première :
+		//si les faces ont le même nombre de soleil, il choisit bien une face, arbitairement la première :
 		i1=joueur.choixFace(face4,face5);
 		assertEquals(0,i1);
     }
@@ -67,7 +67,7 @@ public class BotSoleilTest {
 		assertEquals(face4,de2.getFace(0));
 		joueur.forge(face1);
 		assertEquals(face1,de1.getFace(0));
-		//nos dés ont tous les deux un total de 3 points de victoire, le bot devrait forger la nouvelle face sur le second dé (arbitrairement)
+		//nos dés ont tous les deux un total de 2 soleils, le bot devrait forger la nouvelle face sur le second dé (arbitrairement)
 		joueur.forge(face5);
 		assertEquals(face5,de2.getFace(1));
 	}
@@ -100,7 +100,7 @@ public class BotSoleilTest {
 		assertEquals(joueur.tourSanctuaire(),false);
 		joueur.addSoleil(5);
 		assertEquals(joueur.tourSanctuaire(),false);
-		// Nous vérifions aussi que dans le cas ou il ne peut acheter une carte il regarde si il peut prendre une face qui donne des points de victoires (true)
+		// Nous vérifions aussi que dans le cas ou il ne peut acheter une carte il regarde si il peut prendre une face qui donne des soleils (true)
 		joueur.addSoleil(-5);
 		joueur.addLune(-5);
 		joueur.addOr(8);
@@ -130,7 +130,7 @@ public class BotSoleilTest {
 
 	@Test
 	void faireAchatCartes() {
-		// Nous allons vérifier que la méthode renvoie null si le joueur ne peut acheter aucune cartes
+		// Nous allons vérifier que la méthode renvoie null si le joueur ne peut acheter aucune carte
 		Carte carte1 = new Carte("Jadore", 3, 3, 5);
 		Carte carte2 = new Carte("Géant", 5, 0, 10);
 		Carte carte3 = new Carte("Face", 5, 2, 8);
@@ -143,9 +143,9 @@ public class BotSoleilTest {
 	@Test
 	void changeOrEnMarteau()
 	{
-		// On vérifie que le bot à 0 or
+		// On vérifie que le bot a 0 or
 		assertEquals(0,joueur.getOr());
-		// Dans se cas là le bot devai ne pas le mettre dans son marteau il va retourner 0
+		// Dans se cas-là le bot ne devrait pas le mettre dans son marteau il va retourner 0
 		assertEquals(0,joueur.changeOrEnMarteau(3));
 		// On va mettre notre joueur avec 9 Or et donc la valeur qu'on va mettre dans changeOrEnMarteau devrait etre retourné sur notre prochain test
 		joueur.addOr(9);

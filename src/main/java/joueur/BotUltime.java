@@ -117,7 +117,7 @@ public class BotUltime extends Bot {
         for (int indice = 0; indice < faces.length; indice++) {
             int valeurVic = BotUtils.valeurVictoire(faces[indice]);
             int valeurSol = BotUtils.valeurSoleil(faces[indice]);
-            int valeurOr = valeurOr(faces[indice]);
+            int valeurOr = BotUtils.valeurOr(faces[indice]);
             int valeurLun = BotUtils.valeurLune(faces[indice]);
             boolean boolOr = (valeurOr == 0);
             boolean boolLun = (valeurLun == 0);
@@ -140,8 +140,8 @@ public class BotUltime extends Bot {
             if (valeurLun >= 0 && boolOr && boolSol && boolVic && this.getJoueur().getLune() == 0) {
                 return indice;
             }
-            // On choisit alors la face qui nous fait perdre le moins d'Or
-            if (valeurOr > 0 && valeurOr <= poidFace && valeurAccessoireOr(faces[indice]) <= bonus) {
+            // On choisit alors la face qui nous fait perdre le moins d'Or et de valeurAccesoire
+            if (valeurOr > 0 && valeurOr+valeurAccessoireOr(faces[indice]) <= poidFace + bonus) {
                 choix = indice;
                 poidFace = valeurOr;
                 bonus = valeurAccessoireOr(faces[indice]);
@@ -257,11 +257,6 @@ public class BotUltime extends Bot {
 
     @Override
     public void forge(Face face) {
-        int valeurVic = BotUtils.valeurVictoire(face);
-        int valeurSol = BotUtils.valeurSoleil(face);
-        int valeurOr = valeurOr(face);
-        int valeurLun = BotUtils.valeurLune(face);
-
         int minIndiceLuneDe1 = getMinIndiceLune(getJoueur().de1);
         int minIndiceLuneDe2 = getMinIndiceLune(getJoueur().de2);
         int minIndiceOrDe1 = getMinIndiceOr(getJoueur().de1);
@@ -270,7 +265,6 @@ public class BotUltime extends Bot {
         int minIndiceVictoireDe2 = getMinIndiceVictoire(getJoueur().de2);
         int minIndiceSoleilDe1 = getMinIndiceSoleil(getJoueur().de1);
         int minIndiceSoleilDe2 = getMinIndiceSoleil(getJoueur().de2);
-        int action = 0;
 
         De tempDe1 = getJoueur().de1;
         De tempDe2 = getJoueur().de2;
@@ -282,123 +276,95 @@ public class BotUltime extends Bot {
         tempDe1.getFace(minIndiceVictoireDe1);
         Face faceMinVictoireDe2 = tempDe2.getFace(minIndiceVictoireDe2);
         tempDe1.getFace(minIndiceSoleilDe1);
-        Face faceMinSoleilDe2 = tempDe2.getFace(minIndiceSoleilDe2);
-
         //  On Traite la X3
-        if (face == Faces.X3 && action == 0) {
+        if (face == Faces.X3 ) {
             getJoueur().de2.forge(face, minIndiceOrDe2);
-            action++;
+            return;
         }
 
         // On traite MIROIR
         // Normalement impossible que notre joueur en achète, mais on traite ce cas quand même.
         // Si il y en a un, il est placé à la place de la face rapportant le moins de victoire.
-        if (face == Faces.MIROIR && action == 0) {
+        if (face == Faces.MIROIR) {
             getJoueur().de2.forge(face, minIndiceVictoireDe2);
-            action++;
+            return;
         }
 
-        // On Traite OR_1 - OR_2 - OR_3 - OR_4 - OR_6
-        if (valeurAccessoireOr(face) == 0 && valeurOr(face) > 0 && action == 0) {
-            if (BotUtils.valeurDe(VALEUR_OR,tempDe1) < VALEUR_OR_MINIMUM_DE1) {
-                getJoueur().de1.forge(face, minIndiceOrDe1);
-                action++;
-            }
-            if (BotUtils.valeurDe(VALEUR_OR,tempDe1) >= VALEUR_OR_MINIMUM_DE1 && action == 0) {
-                getJoueur().de2.forge(face, minIndiceOrDe2);
-                action++;
-            }
+        // On Traite OR_1 - OR_2 - OR_3 - OR_4 - OR_6 - OR_3_OU_VICTOIRE_2
+        if (face == Faces.OR_1 || face == Faces.OR_2 || face == Faces.OR_3 || face == Faces.OR_4 || face == Faces.OR_6 || face == Faces.OR_3_OU_VICTOIRE_2) {
+        	if (BotUtils.valeurDe(VALEUR_OR,tempDe1) < VALEUR_OR_MINIMUM_DE1)
+        		getJoueur().de1.forge(face, minIndiceOrDe1);
+        	else 
+        		getJoueur().de2.forge(face, minIndiceOrDe2);
+            return;
         }
 
         // On Traite OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1
-        if (valeurOr == 1 && valeurAccessoireOr(face) == 3 && action == 0) {
+        if (face == Faces.OR_1_LUNE_1_SOLEIL_1_VICTOIRE_1) {
             getJoueur().de1.forge(face, minIndiceSoleilDe1);
-            action++;
+            return;
         }
 
         // On Traite LUNE_1  - LUNE_2
-        if (valeurLun > 0 && valeurAccessoireLune(face) == 0 && BotUtils.valeurDe(VALEUR_LUNE,tempDe2) <= 2 && action == 0) {
+        if (face == Faces.LUNE_1 || face == Faces.LUNE_2) {
             getJoueur().de2.forge(face, minIndiceOrDe2);
-            action++;
+            return;
         }
 
         // On Traite VICTOIRE_1 - VICTOIRE_2 - VICTOIRE_3 -  VICTOIRE_4
-        if (valeurVic == 0 && valeurAccessoireVictoire(face) == 0 && action == 0) {
+        if (face==Faces.VICTOIRE_1 || face==Faces.VICTOIRE_2 || face==Faces.VICTOIRE_3 || face==Faces.VICTOIRE_4) {
             getJoueur().de1.forge(face, minIndiceOrDe1);
-            action++;
+            return;
         }
 
         // On Traite OR_2_OU_LUNE_2_OU_SOLEIL_2  - OR_1_OU_LUNE_1_OU_SOLEIL_1
-        if (valeurOr >= 1 && valeurLun >= 1 && valeurSol >= 1 && action == 0) {
+        if (face == Faces.OR_1_OU_LUNE_1_OU_SOLEIL_1 || face == Faces.OR_2_OU_LUNE_2_OU_SOLEIL_2) {
             getJoueur().de2.forge(face, minIndiceOrDe2);
-            action++;
+            return;
         }
 
-        // On Traite OR_3_OU_VICTOIRE_2
-        if (valeurOr == 3 && valeurVic == 2 && action == 0) {
-            if (BotUtils.valeurDe(VALEUR_OR,tempDe1) < VALEUR_OR_MINIMUM_DE1) {
-                getJoueur().de1.getFace(getMinIndiceOr(getJoueur().de1));
-                action++;
-            }
-            if (BotUtils.valeurDe(VALEUR_OR,tempDe1) >= VALEUR_OR_MINIMUM_DE1 && action == 0) {
-                getJoueur().de2.forge(face, getMinIndiceOr(getJoueur().de2));
-                action++;
-            }
-        }
 
         // On Traite OR_2_LUNE_1
-        if (valeurOr == 2 && valeurLun == 1 && action == 0) {
-            if (BotUtils.valeurDe(VALEUR_LUNE,tempDe1) < VALEUR_LUNE_MINIMUM_DE1) {
+        if (face == Faces.OR_2_LUNE_1) {
+            if (BotUtils.valeurDe(VALEUR_LUNE,tempDe1) < VALEUR_LUNE_MINIMUM_DE1) 
                 getJoueur().de1.forge(face, minIndiceOrDe1);
-                action++;
-            }
-            if (BotUtils.valeurDe(VALEUR_LUNE,tempDe2) < VALEUR_LUNE_MINIMUM_DE2 && action == 0) {
+            else
                 getJoueur().de2.forge(face, minIndiceOrDe2);
-                action++;
-            }
+            return;
+            
         }
 
         // On Traite LUNE_2_VICTOIRE_2
-        if (valeurLun == 2 && valeurVic == 2 && action == 0) {
+        if (face == Faces.LUNE_2_VICTOIRE_2) {
             if (BotUtils.valeurDe(VALEUR_LUNE,tempDe1) < VALEUR_LUNE_MINIMUM_DE1) {
-                if (BotUtils.valeurLune(faceMinLuneDe1) == 1 && valeurAccessoireLune(faceMinLuneDe1)== 0) {
+                if (BotUtils.valeurLune(faceMinLuneDe1) == 1 && valeurAccessoireLune(faceMinLuneDe1)== 0) 
                     getJoueur().de1.forge(face, minIndiceLuneDe1);
-                    action++;
-                }
-                if (action == 0) ;
-                {
+                else
                     getJoueur().de1.forge(face, minIndiceOrDe1);
-                    action++;
-                }
             }
-            if (BotUtils.valeurDe(VALEUR_LUNE,tempDe2) < VALEUR_LUNE_MINIMUM_DE2 && action == 0) {
+            else
                 getJoueur().de2.forge(face, minIndiceVictoireDe2);
-                action++;
+            return;
             }
-        }
-
+        
         // On traite SOLEIL_1 - SOLEIL_2
-        if ((valeurSol == 2 && valeurSol == 1) && valeurAccessoireSoleil(face) == 0 && action == 0) {
+        if (face == Faces.SOLEIL_1 || face == Faces.SOLEIL_2) {
             getJoueur().de2.forge(face, minIndiceOrDe2);
-            action++;
+            return;
         }
 
         // On Traite enfin le dernier SOLEIL_1_VICTOIRE_1
-        if (valeurSol == 1 && valeurVic == 1 && valeurAccessoireSoleil(face) == 1 && action == 0) {
-            if (BotUtils.valeurVictoire(faceMinVictoireDe2) == 2 && valeurAccessoireVictoire(faceMinVictoireDe2) == 0) {
+        if (face == Faces.SOLEIL_1_VICTOIRE_1) {
+            if (BotUtils.valeurVictoire(faceMinVictoireDe2) == 2 && valeurAccessoireVictoire(faceMinVictoireDe2) == 0) 
                 getJoueur().de2.forge(face, minIndiceVictoireDe2);
-                action++;
-            }
-            if (valeurOr(faceMinOrDe2) == 1 && valeurAccessoireOr(faceMinOrDe2) == 0 && action == 0) {
+            else if (valeurOr(faceMinOrDe2) == 1 && valeurAccessoireOr(faceMinOrDe2) == 0) 
                 getJoueur().de2.forge(face, minIndiceOrDe2);
-            }
-            if (BotUtils.valeurSoleil(faceMinSoleilDe2) == 1 && valeurAccessoireSoleil(faceMinSoleilDe2) == 0 && action == 0) {
+            else
                 getJoueur().de2.forge(face, minIndiceSoleilDe2);
-                action++;
-            }
+            return;
         }
-
-
+        getJoueur().getDe1().forge(face, minIndiceOrDe1);
+        return;
     }
 
 
