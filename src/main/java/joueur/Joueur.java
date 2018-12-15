@@ -17,6 +17,11 @@ public class Joueur {
 	private int soleil, soleilMax;
 	private int lune, luneMax;
 	private int victoire;
+	public static final String RESET = "\u001B[0m";
+	public static final String RED_B = "\u001B[0;91m";    // RED
+	public static final String GREEN_B = "\u001B[0;92m";  // GREEN
+	public static final String YELLOW_B = "\u001B[0;93m"; // YELLOW
+	public static final String BLUE_B = "\u001B[0;94m";   // BLUE
 
 	private List<CarteRenfort> renforts;
 
@@ -299,9 +304,9 @@ public class Joueur {
 	}
 
 	public String getStatus() {
-		String resources = this + " a " + getOr() + "/" + orMax + " or, " + getLune() + "/" + luneMax
-				+ " éclats de lune, " + getSoleil() + "/" + soleilMax + " éclats de soleil et " + getVictoire()
-				+ " points de victoire";
+		String resources = this + " a " + getOr() + "/" + orMax + YELLOW_B + " or, " + RESET + getLune() + "/" + luneMax
+				+ BLUE_B +" éclats de lune, " + RESET + getSoleil() + "/" + soleilMax + RED_B + " éclats de soleil et " + RESET + getVictoire()
+				+ GREEN_B  + " points de victoire"+ RESET;
 		String strde1 = "\nDé 1 : " + de1;
 		String strde2 = "\nDé 2 : " + de2;
 		return resources + strde1 + strde2;

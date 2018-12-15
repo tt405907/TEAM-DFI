@@ -4,6 +4,8 @@ import joueur.Joueur;
 
 public class FaceVictoire extends Face{
 	private int nombreVictoire;
+	public static final String RESET = "\u001B[0m";
+	public static final String GREEN = "\u001B[1;32m";
 
 	public FaceVictoire(int n,int prix) {
 		super(prix);
@@ -15,9 +17,7 @@ public class FaceVictoire extends Face{
 	}
 
 	@Override
-	public String toString() {
-		return nombreVictoire + " Victoire";
-	}
+	public String toString() {return nombreVictoire + GREEN + " Victoire" + RESET; }
 	
 	public void appliquerNegatif(Joueur j) {
 		j.addVictoire(-nombreVictoire);
