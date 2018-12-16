@@ -25,6 +25,10 @@ public class FaceMultipleTest {
 		face.appliquer(joueur);
 		assertEquals(4, joueur.getOr());
 		assertEquals(2, joueur.getLune());
+		face.appliquerNegatif(joueur);
+		assertEquals(0, joueur.getOr());
+		assertEquals(0, joueur.getLune());
+		assertEquals(face.toString(),"4 Or + 2 Lune");
 		}
 	
 	@Test
@@ -40,6 +44,12 @@ public class FaceMultipleTest {
 		assertEquals(2, joueur.getLune());
 		assertEquals(3, joueur.getSoleil());
 		assertEquals(1, joueur.getVictoire());
+		face.appliquerNegatif(joueur);
+		assertEquals(0, joueur.getOr());
+		assertEquals(0, joueur.getLune());
+		assertEquals(0, joueur.getVictoire());
+		assertEquals(0, joueur.getSoleil());
+		assertEquals(face.toString(),"4 Or + 2 Lune + 1 Victoire + 3 Soleil");
 		}
 
 }
