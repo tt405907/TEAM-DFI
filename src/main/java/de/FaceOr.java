@@ -4,6 +4,8 @@ import joueur.Joueur;
 
 public class FaceOr extends Face{
 	private int nombreOr;
+	public static final String RESET = "\u001B[0m";
+	public static final String YELLOW = "\u001B[1;33m";
 
 	public FaceOr(int n,int prix) {
 		super(prix);
@@ -16,7 +18,7 @@ public class FaceOr extends Face{
 
 	@Override
 	public String toString() {
-		return nombreOr + " Or";
+		return nombreOr + YELLOW + " Or" + RESET;
 	}
 
 	@Override
