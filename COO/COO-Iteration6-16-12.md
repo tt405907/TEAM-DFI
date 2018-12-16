@@ -8,7 +8,7 @@ Nous avions prévu de réaliser les tâches suivantes :
 
 Toutes les tâches ont été accomplies. 2 nouveaux bots ont été créés:
 * BotSoleil, basant sa stratégie sur les faces rapportant du soleil
-* BotUltime, basant sa stratégie sur XXX (à compléter)
+* BotUltime, basant sa stratégie sur les marteaux et l'obtention d'or
 
 Pour les tests : 
 * Vérifier que les changements des joueurs et des bots existants ne causent pas de régression
@@ -18,6 +18,6 @@ Ces tests ont tous été réalisés.
 
 # Diagrammes de l'itération 
 
-Diagramme de classe
+Diagramme de classe final
 
 ![Diagram](Diagram-Iteration6-16-12.png)
