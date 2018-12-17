@@ -60,7 +60,7 @@ public class FaceSelectionTest {
 	}
 	@Test
 	void ToString() {
-		assertEquals(face.toString(),"4 Or ou 2 Lune");
+		assertEquals(face.toString(),"4[1;33m Or[0m ou 2[1;34m Lune[0m");
 	}
 	@Test
 	void appliquerNegatif() {
